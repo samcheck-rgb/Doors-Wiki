@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOORS — Complete Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#09080a;--dark:#110d10;--surface:#1b1520;--card:#231b28;--card2:#2c2232;
+  --border:rgba(180,130,220,.13);--border2:rgba(180,130,220,.28);
+  --gold:#c8a050;--gold2:#e8c070;--amber:#d4870a;
+  --red:#c0392b;--red2:#e74c3c;
+  --teal:#1abc9c;--green:#27ae60;--purple:#9b59b6;--blue:#2980b9;
+  --text:#e8dcc8;--muted:#9a8870;--dim:#5a4e3e;--white:#f5ede0;
+  --font-d:'Cinzel',serif;--font-b:'Crimson Text',serif;--font-u:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--text);font-family:var(--font-b);font-size:17px;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);pointer-events:none;z-index:9999}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:radial-gradient(ellipse at 50% 55%,#1a0820 0%,var(--black) 70%)}
+.hero-arch-bg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(14,1fr);gap:3px;opacity:.05;padding:0}
+.hero-arch-bg span{background:linear-gradient(180deg,#c8a050 0%,transparent 100%);border-radius:50% 50% 0 0}
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 25%,var(--black) 72%)}
+.hero-content{position:relative;z-index:2;max-width:820px;padding:2rem}
+.hero-eyebrow{font-family:var(--font-u);font-size:11px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;opacity:.8}
+.hero-title{font-family:var(--font-d);font-size:clamp(4.5rem,13vw,10rem);font-weight:900;color:var(--white);letter-spacing:.06em;line-height:.88;text-shadow:0 0 80px rgba(155,89,182,.3),0 0 200px rgba(155,89,182,.12);margin-bottom:.5rem}
+.hero-sub-word{font-family:var(--font-d);display:block;font-size:.38em;letter-spacing:.5em;font-weight:400;color:var(--gold);margin-top:.4rem}
+.hero-tagline{font-family:var(--font-b);font-size:1.15rem;color:var(--muted);font-style:italic;margin:1.5rem auto 2.5rem;max-width:480px}
+.hero-stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}
+.hero-stat-num{font-family:var(--font-d);font-size:1.9rem;font-weight:700;color:var(--gold)}
+.hero-stat-lbl{font-family:var(--font-u);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.hero-scroll{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);font-family:var(--font-u);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);animation:bob 2s infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* NAV */
+.wiki-nav{position:sticky;top:0;z-index:100;background:rgba(9,8,10,.96);border-bottom:1px solid var(--border);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.wiki-nav-inner{max-width:1340px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:0;overflow-x:auto;scrollbar-width:none}
+.wiki-nav-inner::-webkit-scrollbar{display:none}
+.nav-brand{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--gold);padding:1rem 1.5rem 1rem 0;border-right:1px solid var(--border);margin-right:.5rem;white-space:nowrap;flex-shrink:0;text-decoration:none}
+.nav-link{font-family:var(--font-u);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.9rem .75rem;white-space:nowrap;transition:color .2s;flex-shrink:0}
+.nav-link:hover{color:var(--gold)}
+
+/* LAYOUT */
+.wiki-main{max-width:1340px;margin:0 auto;padding:0 2rem 6rem}
+
+/* SECTIONS */
+.wiki-section{margin-top:5rem}
+.section-header{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:2.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.section-num{font-family:var(--font-u);font-size:10px;letter-spacing:.3em;color:var(--gold);opacity:.7;flex-shrink:0}
+.section-title{font-family:var(--font-d);font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:var(--white);letter-spacing:.05em}
+.section-desc{font-style:italic;color:var(--muted);font-size:.92rem;margin-top:.25rem}
+.chapter-intro{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:820px;margin-bottom:2rem;font-style:italic}
+
+/* SUB-HEADER */
+.sub-h{font-family:var(--font-u);font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.8;margin:2.8rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+
+/* ORNAMENT */
+.ornament{text-align:center;display:flex;align-items:center;gap:1rem;color:var(--dim);font-size:.7rem;letter-spacing:.5em;margin:4.5rem 0}
+.ornament::before,.ornament::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* INFO BOX */
+.info-box{background:rgba(200,160,80,.06);border:1px solid rgba(200,160,80,.2);border-radius:3px;padding:1.1rem 1.4rem;margin:1.5rem 0;font-size:.92rem;color:var(--text);line-height:1.65}
+.info-box.red{background:rgba(192,57,43,.06);border-color:rgba(192,57,43,.22)}
+.info-box.purple{background:rgba(155,89,182,.06);border-color:rgba(155,89,182,.22)}
+.info-box strong{font-family:var(--font-d);color:var(--gold2);display:block;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--dim);border-radius:3px}
+
+/* ===== FLOORS ===== */
+.floors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.4rem}
+.floor-card{background:var(--card);border:1px solid var(--border);border-radius:3px;overflow:hidden;transition:border-color .3s,transform .2s}
+.floor-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.floor-banner{height:76px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;opacity:.8}
+.fb-hotel{background:linear-gradient(135deg,#1a0e08 0%,#301800 100%)}
+.fb-mines{background:linear-gradient(135deg,#081210 0%,#102820 100%)}
+.fb-backdoor{background:linear-gradient(135deg,#140820 0%,#280e40 100%)}
+.fb-rooms{background:linear-gradient(135deg,#101214 0%,#1e2428 100%)}
+.fb-outdoors{background:linear-gradient(135deg,#0a1208 0%,#1a2e10 100%)}
+.floor-body{padding:1.2rem 1.4rem 1.5rem}
+.floor-tag{font-family:var(--font-u);font-size:9px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;opacity:.8}
+.floor-name{font-family:var(--font-d);font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:.55rem;letter-spacing:.03em}
+.floor-desc{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.9rem}
+.floor-pills{display:flex;flex-wrap:wrap;gap:.35rem}
+.pill{font-family:var(--font-u);font-size:9.5px;font-weight:500;padding:2px 8px;border-radius:2px;background:rgba(200,160,80,.08);border:1px solid var(--border);color:var(--muted)}
+.pill.red{background:rgba(192,57,43,.12);border-color:rgba(192,57,43,.28);color:#e08070}
+.pill.teal{background:rgba(26,188,156,.08);border-color:rgba(26,188,156,.22);color:#1abc9c}
+.pill.purple{background:rgba(155,89,182,.1);border-color:rgba(155,89,182,.25);color:#a569bd}
+.pill.green{background:rgba(39,174,96,.08);border-color:rgba(39,174,96,.22);color:#55d98d}
+
+/* SUBLEVELS */
+.sublevels-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.2rem}
+.sub-card{background:var(--card);border:1px solid var(--border);border-radius:3px;padding:1.4rem}
+.sub-card h3{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--white);letter-spacing:.03em;margin-bottom:.55rem}
+.sub-card p{font-size:.88rem;color:var(--muted);line-height:1.6;margin-bottom:.7rem}
+.sub-card ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.sub-card ul li{font-size:.85rem;color:var(--muted);padding-left:1.1rem;position:relative}
+.sub-card ul li::before{content:'◆';position:absolute;left:0;color:var(--gold);font-size:.45rem;top:7px}
+
+/* ===== ENTITIES ===== */
+.entities-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.1rem}
+.entity-card{background:var(--card);border:1px solid var(--border);border-radius:3px;padding:1.2rem 1.3rem;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.entity-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%}
+.entity-card.hostile::before{background:var(--red2)}
+.entity-card.neutral::before{background:var(--gold)}
+.entity-card.friendly::before{background:var(--green)}
+.entity-card.passive::before{background:var(--blue)}
+.entity-card:hover{border-color:var(--border2);transform:translateY(-1px)}
+.etype{font-family:var(--font-u);font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.4rem}
+.etype.hostile{color:var(--red2)}.etype.neutral{color:var(--gold)}.etype.friendly{color:var(--green)}.etype.passive{color:#5dade2}
+.ename{font-family:var(--font-d);font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:.45rem;letter-spacing:.03em}
+.edesc{font-size:.86rem;color:var(--muted);line-height:1.55;margin-bottom:.8rem}
+.estats{display:grid;grid-template-columns:1fr 1fr;gap:.35rem}
+.estat{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:2px;padding:.35rem .55rem}
+.estat-lbl{font-family:var(--font-u);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:1px}
+.estat-val{font-family:var(--font-u);font-size:11.5px;font-weight:600;color:var(--text)}
+.estat-val.red{color:var(--red2)}.estat-val.gold{color:var(--gold)}.estat-val.green{color:var(--green)}.estat-val.purple{color:#a569bd}
+
+/* ===== ITEMS ===== */
+.items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:1rem}
+.item-card{background:var(--card);border:1px solid var(--border);border-radius:3px;padding:1rem;text-align:center;transition:border-color .2s,transform .2s}
+.item-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.item-icon{width:52px;height:52px;margin:0 auto .65rem;background:rgba(200,160,80,.05);border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.6rem}
+.rarity{font-family:var(--font-u);font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.25rem}
+.r-common{color:#aaa}.r-uncommon{color:#27ae60}.r-rare{color:#3498db}.r-epic{color:#9b59b6}.r-legendary{color:#f39c12}.r-event{color:#e74c3c}
+.iname{font-family:var(--font-d);font-size:.92rem;font-weight:700;color:var(--white);margin-bottom:.35rem;letter-spacing:.02em}
+.idesc{font-size:.8rem;color:var(--muted);line-height:1.5}
+.iprice{font-family:var(--font-u);font-size:10.5px;font-weight:600;color:var(--gold);margin-top:.45rem}
+
+/* ===== MODIFIERS TABLE ===== */
+.mod-table-wrap{overflow-x:auto;border-radius:3px;border:1px solid var(--border)}
+.mod-table{width:100%;border-collapse:collapse;font-size:.86rem}
+.mod-table th{font-family:var(--font-u);font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);background:rgba(200,160,80,.06);padding:.65rem 1rem;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+.mod-table td{padding:.55rem 1rem;border-bottom:1px solid rgba(180,130,220,.07);vertical-align:top;color:var(--muted);font-size:.84rem;line-height:1.45}
+.mod-table tr:last-child td{border-bottom:none}
+.mod-table tr:hover td{background:rgba(255,255,255,.02)}
+.mod-name{font-family:var(--font-d);font-weight:700;color:var(--white);font-size:.88rem;letter-spacing:.02em;white-space:nowrap}
+.mod-bonus{font-family:var(--font-u);font-weight:600;font-size:.82rem;white-space:nowrap}
+.bonus-pos{color:#55d98d}.bonus-neg{color:#e08070}.bonus-zero{color:var(--muted)}
+.mod-cat{font-family:var(--font-u);font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:2px 6px;border-radius:2px}
+.cat-general{background:rgba(200,160,80,.1);color:var(--gold);border:1px solid rgba(200,160,80,.2)}
+.cat-entity{background:rgba(192,57,43,.1);color:#e08070;border:1px solid rgba(192,57,43,.2)}
+.cat-light{background:rgba(26,188,156,.08);color:#1abc9c;border:1px solid rgba(26,188,156,.2)}
+.cat-loot{background:rgba(155,89,182,.1);color:#a569bd;border:1px solid rgba(155,89,182,.2)}
+.cat-player{background:rgba(52,152,219,.1);color:#5dade2;border:1px solid rgba(52,152,219,.2)}
+.cat-special{background:rgba(243,156,18,.1);color:#f39c12;border:1px solid rgba(243,156,18,.2)}
+.cat-random{background:rgba(231,76,60,.08);color:#e74c3c;border:1px solid rgba(231,76,60,.2)}
+
+/* ===== ACHIEVEMENTS ===== */
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.ach-card{background:var(--card);border:1px solid var(--border);border-radius:3px;padding:.95rem 1.1rem;display:flex;gap:.9rem;align-items:flex-start;transition:border-color .2s}
+.ach-card:hover{border-color:var(--border2)}
+.ach-icon{font-size:1.6rem;flex-shrink:0;line-height:1;margin-top:2px}
+.ach-body{flex:1;min-width:0}
+.ach-name{font-family:var(--font-d);font-size:.92rem;font-weight:700;color:var(--white);margin-bottom:.2rem;letter-spacing:.02em}
+.ach-req{font-size:.8rem;color:var(--muted);line-height:1.5}
+.ach-badge{font-family:var(--font-u);font-size:8.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:2px 6px;border-radius:2px;margin-top:.35rem;display:inline-block}
+.b-easy{background:rgba(39,174,96,.1);color:#27ae60;border:1px solid rgba(39,174,96,.22)}
+.b-med{background:rgba(243,156,18,.1);color:#f39c12;border:1px solid rgba(243,156,18,.22)}
+.b-hard{background:rgba(231,76,60,.1);color:var(--red2);border:1px solid rgba(231,76,60,.22)}
+.b-extreme{background:rgba(155,89,182,.12);color:#a569bd;border:1px solid rgba(155,89,182,.25)}
+.b-secret{background:rgba(52,152,219,.1);color:#5dade2;border:1px solid rgba(52,152,219,.22)}
+.b-event{background:rgba(231,76,60,.08);color:#e74c3c;border:1px solid rgba(231,76,60,.2)}
+
+/* ===== EVENTS ===== */
+.events-list{display:flex;flex-direction:column;gap:1.2rem}
+.event-row{background:var(--card);border:1px solid var(--border);border-radius:3px;padding:1.4rem 1.8rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.4rem;align-items:start}
+.event-icon{width:46px;height:46px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:rgba(200,160,80,.07);border:1px solid var(--border);flex-shrink:0}
+.event-body h3{font-family:var(--font-d);font-size:1rem;font-weight:700;color:var(--white);letter-spacing:.03em;margin-bottom:.3rem}
+.event-body p{font-size:.88rem;color:var(--muted);line-height:1.55}
+.event-period{font-family:var(--font-u);font-size:9.5px;font-weight:500;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;text-align:right;flex-shrink:0}
+
+/* ===== RARITIES ===== */
+.rarity-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.1rem}
+.rarity-card{background:var(--card);border:1px solid var(--border);border-radius:3px;padding:1.2rem 1.4rem}
+.rarity-card h3{font-size:1rem;font-family:var(--font-d);font-weight:700;color:var(--white);margin-bottom:.55rem}
+.rarity-card p{font-size:.87rem;color:var(--muted);line-height:1.6;margin-bottom:.7rem}
+.rarity-card ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.rarity-card ul li{font-size:.83rem;color:var(--muted);padding-left:1.1rem;position:relative}
+.rarity-card ul li::before{content:'◆';position:absolute;left:0;font-size:.45rem;top:7px}
+
+/* TIPS */
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.tip-card{background:var(--card);border:1px solid var(--border);border-radius:3px;padding:1.4rem}
+.tip-num{font-family:var(--font-d);font-size:2.5rem;font-weight:900;color:var(--gold);opacity:.22;line-height:1;margin-bottom:.45rem}
+.tip-text{font-size:.93rem;color:var(--text);line-height:1.65}
+.tip-text strong{color:var(--gold2);font-weight:600}
+
+/* LORE */
+.lore-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+
+/* RESPONSIVE */
+@media(max-width:780px){
+  .wiki-main{padding:0 1rem 4rem}
+  .hero-title{font-size:clamp(3rem,15vw,5.5rem)}
+  .hero-stats{gap:1rem}
+  .event-row{grid-template-columns:auto 1fr}
+  .event-period{grid-column:1/-1}
+  .section-header{flex-direction:column;gap:.3rem}
+}
+
+/* FOOTER */
+.wiki-footer{border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;background:var(--dark)}
+.wiki-footer p{font-size:.82rem;color:var(--dim);font-style:italic}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-arch-bg" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-vignette" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">The Complete Encyclopedia · All Floors · All Entities · All Achievements</p>
+    <h1 class="hero-title">DOORS<span class="hero-sub-word">Wiki</span></h1>
+    <p class="hero-tagline">Every door hides something. Every shadow breathes. Know what waits on the other side.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-lbl">Floors</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">30+</div><div class="hero-stat-lbl">Entities</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">80</div><div class="hero-stat-lbl">Modifiers</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">120+</div><div class="hero-stat-lbl">Achievements</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">20+</div><div class="hero-stat-lbl">Items</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">▼ scroll to explore ▼</div>
+</section>
+
+<!-- NAV -->
+<nav class="wiki-nav" aria-label="Wiki navigation">
+  <div class="wiki-nav-inner">
+    <a href="#top" class="nav-brand">DOORS</a>
+    <a href="#floors" class="nav-link">Floors</a>
+    <a href="#sublevels" class="nav-link">Sublevels</a>
+    <a href="#entities" class="nav-link">Entities</a>
+    <a href="#items" class="nav-link">Items</a>
+    <a href="#modifiers" class="nav-link">Modifiers</a>
+    <a href="#rarities" class="nav-link">Rarities</a>
+    <a href="#achievements" class="nav-link">Achievements</a>
+    <a href="#events" class="nav-link">Events</a>
+    <a href="#tips" class="nav-link">Tips</a>
+    <a href="#lore" class="nav-link">Lore</a>
+  </div>
+</nav>
+
+<main class="wiki-main">
+
+<!-- ===== 01 FLOORS ===== -->
+<section class="wiki-section" id="floors">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <div><h2 class="section-title">Floors</h2><p class="section-desc">The five main play areas of DOORS — each with unique rooms, hazards, entities, and atmosphere</p></div>
+  </div>
+  <p class="chapter-intro">DOORS is divided into distinct floors. Each floor escalates in danger, introduces new entity types, and features unique room generation. Completing a floor's final door earns an achievement and advances the game. Dying resets you to the elevator — all progress in the current run is lost (unless using a Lotus/Starfish revival item).</p>
+  <div class="floors-grid">
+
+    <div class="floor-card">
+      <div class="floor-banner fb-hotel">🏨</div>
+      <div class="floor-body">
+        <div class="floor-tag">Floor 1 · Available</div>
+        <div class="floor-name">The Hotel</div>
+        <p class="floor-desc">The original and iconic starting floor. A crumbling Victorian hotel spanning 100 numbered doors. Split into sections: The Reception (doors 0–10), The Grand Hallway, The Library (door 50 — mandatory Figure encounter), The Dining Hall, The Courtyard (door ~89), The Greenhouse rooms (doors ~90–99), and The Electrical Room (door 100 — final boss encounter).</p>
+        <div class="floor-pills">
+          <span class="pill">Doors 0–100</span>
+          <span class="pill teal">Elevator entry</span>
+          <span class="pill red">Rush · Figure · Seek · Screech · Eyes · Halt</span>
+          <span class="pill">~45–90 min</span>
+          <span class="pill">Max 6 players</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor-card">
+      <div class="floor-banner fb-rooms">🌑</div>
+      <div class="floor-body">
+        <div class="floor-tag">Sub-Floor · Infinite Loop</div>
+        <div class="floor-name">The Rooms</div>
+        <p class="floor-desc">An infinite, looping sub-floor accessible via a hidden exit at approximately door 60 in The Hotel. Yellow-tiled, liminal corridors with no end. Houses A-60, A-90, and A-120. Players loop endlessly — the goal for the "A-1000" achievement requires surviving 1,000 rooms. A red barrier prevents entry while modifiers are active.</p>
+        <div class="floor-pills">
+          <span class="pill purple">Secret access ~door 60</span>
+          <span class="pill red">A-60 · A-90 · A-120</span>
+          <span class="pill purple">Infinite loop</span>
+          <span class="pill">A-1000 goal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor-card">
+      <div class="floor-banner fb-backdoor">🔮</div>
+      <div class="floor-body">
+        <div class="floor-tag">Sub-Floor · Post-Hunt</div>
+        <div class="floor-name">The Backdoor</div>
+        <p class="floor-desc">A dimension accessible after The Hunt: First Edition event. Separate from The Rooms, this dimension introduced Haste — an entity that attacks if a Backdoor timer runs out. Levers must be activated to reset the timer. Players can now reach The Backdoor using the "Other Way Around" modifier which was added post-Hunt. Features looping corridors with unique pacing challenges.</p>
+        <div class="floor-pills">
+          <span class="pill purple">Requires modifier unlock</span>
+          <span class="pill red">Haste · A-60 · A-120</span>
+          <span class="pill purple">Lever timer mechanic</span>
+          <span class="pill">Other Way Around badge req.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor-card">
+      <div class="floor-banner fb-mines">⛏️</div>
+      <div class="floor-body">
+        <div class="floor-tag">Floor 2 · Added August 2024</div>
+        <div class="floor-name">The Mines</div>
+        <p class="floor-desc">A sprawling underground mining complex beneath the Hotel. Spans 200+ doors across several distinct sub-sections: The Adit, The Shafts, The Caverns (with Grumble nests), The Nest (door 150 — Grumble boss), The Sewers, The Dam (door 200 — Seek encounter with valve puzzle), and The Woods exit. New hazards include Firedamp gas, Floods, and Minecarts.</p>
+        <div class="floor-pills">
+          <span class="pill">Doors 1–200+</span>
+          <span class="pill red">Grumble · Dread · Figure (Mines) · Seek (Dam)</span>
+          <span class="pill teal">New hazards: Firedamp, Floods, Minecarts</span>
+          <span class="pill">~90–180 min</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor-card">
+      <div class="floor-banner fb-outdoors">🌿</div>
+      <div class="floor-body">
+        <div class="floor-tag">Floor 3 · Added August 2025</div>
+        <div class="floor-name">The Outdoors</div>
+        <p class="floor-desc">An overgrown, post-apocalyptic outdoor environment accessible from The Woods at the end of The Mines. Introduced The Groundskeeper as a major new entity. Features unique environmental hazards and organic room layouts. The "Down The Water Spout" achievement is tied to completing this floor. Enables new modifier options when unlocked.</p>
+        <div class="floor-pills">
+          <span class="pill green">Floor 3 — Outdoors</span>
+          <span class="pill red">Groundskeeper · Snare</span>
+          <span class="pill">New mechanics</span>
+          <span class="pill teal">Sodded modifier unlocked</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+<!-- ===== 02 SUBLEVELS ===== -->
+<section class="wiki-section" id="sublevels">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <div><h2 class="section-title">Sublevels & Special Rooms</h2><p class="section-desc">Mandatory set-pieces, hidden chambers, and pivotal rooms within each floor</p></div>
+  </div>
+  <p class="chapter-intro">Within each floor are special rooms that break the normal numbered-door sequence. Some are mandatory boss encounters with their own mechanics; others are optional secrets or random side rooms. Knowing what to expect prevents cheap deaths.</p>
+  <div class="sublevels-grid">
+
+    <div class="sub-card">
+      <h3>🚗 The Reception (Door 0 — Hotel)</h3>
+      <p>The starting point. Players spawn in a lobby area with a short hallway introducing basic controls. Features El Goblino and Guiding Light for tutorial context. No hostile entities spawn here, but lootable furniture is present.</p>
+      <ul><li>No entity threat — exploration only</li><li>Guiding Light provides gameplay tips</li><li>El Goblino gives hints and dialogue</li><li>First Jeff Shop appears around doors 5–10</li></ul>
+    </div>
+
+    <div class="sub-card">
+      <h3>📚 The Library (Door 50 — Hotel)</h3>
+      <p>The first mandatory boss encounter in the game. A massive library completely patrolled by Figure. Players must collect all scattered books while moving silently. Figure navigates entirely by sound — crouch at all times, never sprint, avoid knocking items.</p>
+      <ul><li>Crouch-walk only — never sprint or jump</li><li>Books must all be collected to progress</li><li>If grabbed: survive a heartbeat QTE minigame</li><li>Inhibitor item greatly reduces Figure's hearing range</li><li>Closets are safe — Hide entity timer still applies</li></ul>
+    </div>
+
+    <div class="sub-card">
+      <h3>⚡ The Electrical Room (Door 100 — Hotel)</h3>
+      <p>The climactic final encounter of Floor 1. Players must restart generators/breakers across the room while Figure patrols. Once all power is restored, the final elevator opens. Figure is faster and more aggressive here than in the Library.</p>
+      <ul><li>Generator puzzle — activate all nodes</li><li>Figure immediately pursues on loud noise</li><li>Completing it earns "Rock Bottom" achievement</li><li>Vitamins recommended before entering</li><li>Closets available but Hide timer is tight</li></ul>
+    </div>
+
+    <div class="sub-card">
+      <h3>🌿 The Courtyard (Door ~89 — Hotel)</h3>
+      <p>An outdoor-adjacent greenhouse-style room containing Snare entities embedded in the floor. The Shears item found here is used to cut vines on a locked vine door, opening a secret path. Required for the "Detour" achievement.</p>
+      <ul><li>Snare entities hide in floor patches</li><li>Shears found on a table — used on vine door</li><li>Skeleton Key unlocks the door behind the vines</li><li>"Detour" achievement for taking the vine path</li></ul>
+    </div>
+
+    <div class="sub-card">
+      <h3>🕳️ The Rooms Entrance (Door ~60 — Hotel)</h3>
+      <p>A hidden door disguised among normal numbered doors, found approximately around door 60 in the Hotel. It opens to the infinite yellow-tiled corridors of The Rooms. The entrance is subtle — only identifiable by its plain unmarked appearance. Entry is blocked when modifiers are active.</p>
+      <ul><li>Random spawn window around doors 55–65</li><li>Blocked entirely when any modifier is enabled</li><li>A-60, A-90, A-120 inhabit The Rooms</li><li>"Back On Track" badge for reaching A-1000</li></ul>
+    </div>
+
+    <div class="sub-card">
+      <h3>🛗 Jeff's Shop (Random — All Floors)</h3>
+      <p>The friendly shopkeeper Jeff appears in a warmly-lit room identifiable by the soft glow under the door and quiet humming. Players spend Gold found in drawers and shelves to buy items. Jeff is completely harmless. A Donation Jar in his shop enables the "Pls Donate" achievement if filled.</p>
+      <ul><li>Appears randomly throughout all floors</li><li>Stock changes each visit; some items floor-specific</li><li>Gold is the in-shop currency (different from Knobs)</li><li>Tipping the jar fully unlocks "Pls Donate"</li></ul>
+    </div>
+
+    <div class="sub-card">
+      <h3>🪲 The Nest (Door 150 — Mines)</h3>
+      <p>A mandatory sub-section in The Mines at door 150. Players must activate all anchor points inside the Nest while Grumble and Queen Grumble patrol the area. Completing it earns "Trespassing" and unlocks the path to The Sewers.</p>
+      <ul><li>Activate all anchors to progress</li><li>Grumble and Queen Grumble patrol actively</li><li>Crucifix can banish regular Grumbles (not Queen)</li><li>"Trespassing" achievement on escape</li></ul>
+    </div>
+
+    <div class="sub-card">
+      <h3>🌊 The Dam (Door 200 — Mines)</h3>
+      <p>The climactic final encounter of Floor 2. A flooded dam area where players must rotate all valves to lower the water level, while Seek (in Mines variant form) actively pursues them through the flooding chamber. One of the most intense sequences in the game.</p>
+      <ul><li>Rotate all valves to drain the dam</li><li>Seek is present and chasing throughout</li><li>Floods slow movement dramatically</li><li>"Down The Drain" achievement on success</li><li>"See You Soon" earned for completing Floor 2</li></ul>
+    </div>
+
+    <div class="sub-card">
+      <h3>🎪 Rift (Random — Hotel/Mines)</h3>
+      <p>A rare, swirling purple portal that occasionally appears in rooms. Walking through it teleports players to a brief alternate space containing bonus loot, unique Candle items, or the Possessed Candle. Required for the "Interconnected" achievement. Cannot be used when certain modifiers are active.</p>
+      <ul><li>Rare random spawn — not guaranteed each run</li><li>Contains bonus items and Gold</li><li>Possessed Candle found here → "Lost In Translation" badge</li><li>"Interconnected" badge for entering a Rift</li><li>Disabled by specific modifiers (No Rift tag)</li></ul>
+    </div>
+
+  </div>
+</section>
+
+<div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+<!-- ===== 03 ENTITIES ===== -->
+<section class="wiki-section" id="entities">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <div><h2 class="section-title">Entities</h2><p class="section-desc">Every creature, monster, helper, and force inhabiting the floors — with accurate counters</p></div>
+  </div>
+  <p class="chapter-intro">Entities are DOORS' central threat mechanic. Each has a unique detection system, attack pattern, warning sign, and counter method. Health does not regenerate — every hit stacks, and dying resets the entire run. Learn the warning signs before the entity, not during.</p>
+
+  <p class="sub-h">Hotel Floor — Core Entities</p>
+  <div class="entities-grid">
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Chaser</div>
+      <div class="ename">Rush</div>
+      <p class="edesc">The most common entity. Charges through consecutive rooms from behind at high speed. Lights flicker intensely 2–4 seconds before arrival. Hide in a wardrobe or under a bed immediately. Deals 40 HP damage per hit. Can be banished with a Crucifix. The "See You Soon" modifier makes Rush silent.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">40 HP</div></div>
+        <div class="estat"><div class="estat-lbl">Warning</div><div class="estat-val">Flickering lights</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Hide immediately</div></div>
+        <div class="estat"><div class="estat-lbl">Floors</div><div class="estat-val gold">All floors</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Multi-Pass</div>
+      <div class="ename">Ambush</div>
+      <p class="edesc">A rarer variant that sweeps through a room multiple times before despawning — up to 8 passes back and forth. Never leaves your hiding spot until the music fully fades. Ambush never completely despawns unless crucified. Multiple Ambushes can stack if re-triggered. The "Stay Out Of My Way" achievement rewards crucifying it.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">40 HP per pass</div></div>
+        <div class="estat"><div class="estat-lbl">Passes</div><div class="estat-val">2–8×</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Stay hidden fully</div></div>
+        <div class="estat"><div class="estat-lbl">Spawn rate</div><div class="estat-val">~1 in 10</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Jump Scare</div>
+      <div class="ename">Screech</div>
+      <p class="edesc">Spawns exclusively in dark rooms. Makes a "pst" tapping sound to alert the player. If you look directly at Screech within a few seconds of hearing it, it takes minimal damage (~5 HP) and flees. Ignoring it results in 40 HP damage. A flashlight or lighter prevents spawning. Cannot spawn in room 0 or 1 even with "I'm Everywhere" modifier.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">40 HP (if ignored)</div></div>
+        <div class="estat"><div class="estat-lbl">Warning</div><div class="estat-val">"pst" sound</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Look directly at it</div></div>
+        <div class="estat"><div class="estat-lbl">Trigger</div><div class="estat-val">Complete darkness</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Gaze</div>
+      <div class="ename">Eyes</div>
+      <p class="edesc">A cluster of floating eyes that drifts through rooms. Looking at Eyes — even partially in your field of view — drains HP rapidly. Avert your gaze or face a wall until it passes. Does NOT require darkness. The Crucifix briefly paralyzes but cannot fully banish Eyes. Achievement "I See You" is earned from dying to it.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">DPS</div><div class="estat-val red">10–30 HP/s</div></div>
+        <div class="estat"><div class="estat-lbl">Warning</div><div class="estat-val">Visual appearance</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Look away / wall</div></div>
+        <div class="estat"><div class="estat-lbl">Crucifix</div><div class="estat-val gold">Paralyzes only</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Chase Sequence</div>
+      <div class="ename">Seek</div>
+      <p class="edesc">Triggers a full corridor chase sequence. Eyes appear on walls and floors as a 15–30 second warning. Seek is a massive darkness entity that sprouts limbs and blocks doors, forcing players to dodge. Two encounters in The Hotel (~doors 30–35 and ~75–80). A Crucifix can be used mid-chase for the "Take A Breather" achievement. Adrenaline is key.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">Instant kill</div></div>
+        <div class="estat"><div class="estat-lbl">Warning</div><div class="estat-val">Eyes on walls/floors</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Sprint + dodge</div></div>
+        <div class="estat"><div class="estat-lbl">Encounters</div><div class="estat-val">~door 30 & ~door 75</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Sound-Seeker</div>
+      <div class="ename">Figure</div>
+      <p class="edesc">Completely blind — navigates purely by sound. Any noise (running, jumping, opening drawers, falling items) alerts Figure. Found in door 50 (Library) and door 100 (Electrical Room). If Figure grabs you, survive a heartbeat minigame by pressing the correct inputs rhythmically. Failing the minigame is an instant kill. The Inhibitor item significantly reduces its hearing range.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Detection</div><div class="estat-val red">Sound only</div></div>
+        <div class="estat"><div class="estat-lbl">Grab result</div><div class="estat-val">Heartbeat QTE</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Crouch, total silence</div></div>
+        <div class="estat"><div class="estat-lbl">Rooms</div><div class="estat-val gold">50 & 100</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Hallway</div>
+      <div class="ename">Halt</div>
+      <p class="edesc">Appears only in specific long, looping hallway rooms. Charges at the player but the hallway teleports — when Halt reaches a wall, you must immediately turn 180° to face the other direction. Keeps alternating until the hallway section ends. The "Roundabout" modifier makes Halt faster and removes the on-screen "TURN AROUND" prompt.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">Instant kill</div></div>
+        <div class="estat"><div class="estat-lbl">Mechanic</div><div class="estat-val">Turn 180° on cue</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Alternate facing</div></div>
+        <div class="estat"><div class="estat-lbl">Ach.</div><div class="estat-val">Two Steps Forward</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card neutral">
+      <div class="etype neutral">Neutral · Floor Trap</div>
+      <div class="ename">Snare</div>
+      <p class="edesc">Hides inside floor patches, appearing as slightly-textured circular dirt marks. Stepping on one trips the player, dealing ~5–10 HP damage and creating noise that can alert nearby entities like Figure. Identifiable by a slight visual shimmer. Appears naturally in the Courtyard/Greenhouse section and throughout The Outdoors floor.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">5–10 HP + noise</div></div>
+        <div class="estat"><div class="estat-lbl">Tell</div><div class="estat-val">Floor shimmer patch</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Step over / avoid</div></div>
+        <div class="estat"><div class="estat-lbl">Modifier</div><div class="estat-val">Watch Your Step</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card neutral">
+      <div class="etype neutral">Neutral · Drawer Trap</div>
+      <div class="ename">Timothy</div>
+      <p class="edesc">A large spider lurking inside specific drawers. Opening a drawer containing Timothy causes a brief jump scare and a 5 HP bite. Completely unavoidable without knowing its location. The "Meet Timothy" achievement is earned from the first encounter. Purely minor in impact but a memorable startle for new players.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">5 HP</div></div>
+        <div class="estat"><div class="estat-lbl">Location</div><div class="estat-val">Random drawers</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val">None — random</div></div>
+        <div class="estat"><div class="estat-lbl">Achievement</div><div class="estat-val">Meet Timothy</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card neutral">
+      <div class="etype neutral">Neutral · Fake Door</div>
+      <div class="ename">Dupe</div>
+      <p class="edesc">Disguises itself as a numbered door but displays a wrong sequential number (one digit off from the real progression door). Entering a Dupe door deals damage and plays a scream. The "Wrong Room" achievement is from dying to Dupe. "Battle Of Wits" modifier makes Dupe spawn far more frequently and silently (no sounds behind fake doors).</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">20–40 HP</div></div>
+        <div class="estat"><div class="estat-lbl">Tell</div><div class="estat-val">Wrong door number</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Check door numbers</div></div>
+        <div class="estat"><div class="estat-lbl">Modifier</div><div class="estat-val gold">Battle Of Wits</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card neutral">
+      <div class="etype neutral">Neutral · Hiding Trap</div>
+      <div class="ename">Hide</div>
+      <p class="edesc">Not a visible creature — Hide occupies wardrobes and under-bed spaces. Staying hidden too long (~15–20 seconds) causes Hide to violently eject the player from the hiding spot, potentially into the path of Rush or Ambush. The "Nowhere To Hide" modifier reduces available hiding spots throughout a run. Achievement "Eviction Notice" for being ejected.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Effect</div><div class="estat-val red">Forced eject</div></div>
+        <div class="estat"><div class="estat-lbl">Timer</div><div class="estat-val">~15–20 sec</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Exit before timer</div></div>
+        <div class="estat"><div class="estat-lbl">Achievement</div><div class="estat-val">Eviction Notice</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card friendly">
+      <div class="etype friendly">Friendly · Shopkeeper</div>
+      <div class="ename">Jeff</div>
+      <p class="edesc">The beloved shopkeeper of DOORS. Completely harmless — humming can be heard under his door. Sells items for Gold. A Donation Jar in his room fills when the player donates excess Gold; when full, the "Pls Donate" achievement is unlocked, which creates a booth in the Roblox game "PLS DONATE." Stock varies between visits and floors.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Threat</div><div class="estat-val green">None</div></div>
+        <div class="estat"><div class="estat-lbl">Role</div><div class="estat-val green">Item shop</div></div>
+        <div class="estat"><div class="estat-lbl">Currency</div><div class="estat-val gold">Gold</div></div>
+        <div class="estat"><div class="estat-lbl">Achievement</div><div class="estat-val">Pls Donate</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card friendly">
+      <div class="etype friendly">Friendly · Guide</div>
+      <div class="ename">Guiding Light</div>
+      <p class="edesc">A supernatural golden light that appears after player deaths to offer hints, tips, and revival via the Lotus/Starfish items. Also provides contextual guidance during first playthroughs. Cannot be harmed or interacted with directly. Represents the game's help system narratively. Has confirmed lore significance as one of the "three architects."</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Threat</div><div class="estat-val green">None</div></div>
+        <div class="estat"><div class="estat-lbl">Role</div><div class="estat-val green">Revival / hints</div></div>
+        <div class="estat"><div class="estat-lbl">Lore</div><div class="estat-val purple">The Architects</div></div>
+        <div class="estat"><div class="estat-lbl">Appears</div><div class="estat-val">After death</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card passive">
+      <div class="etype passive">Passive · Ambient</div>
+      <div class="ename">El Goblino</div>
+      <p class="edesc">A small, wandering entity that appears in early Hotel rooms. Completely harmless. Gives humorous and sometimes lore-relevant hints about the game's mechanics when interacted with. The "Supporting Small Businesses" achievement requires talking to El Goblino. Also appears as a statue in Jeff's shop if the player has the "Herb of Viridis" item.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Threat</div><div class="estat-val green">None</div></div>
+        <div class="estat"><div class="estat-lbl">Role</div><div class="estat-val">Hints / dialogue</div></div>
+        <div class="estat"><div class="estat-lbl">Location</div><div class="estat-val">Early Hotel rooms</div></div>
+        <div class="estat"><div class="estat-lbl">Achievement</div><div class="estat-val">Supporting Small Biz</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="sub-h">The Rooms / Backdoor — A-Series Entities</p>
+  <div class="entities-grid">
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Sprinter</div>
+      <div class="ename">A-60</div>
+      <p class="edesc">A fast-moving entity from The Rooms dimension that charges through corridors with a distinctive screaming sound. Players must hide in one of the small alcoves built into the corridor walls before it arrives. A-60 does not spawn in The Greenhouse floor. Cannot be banished with a Crucifix. "Out Of My Way" achievement for surviving it.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Speed</div><div class="estat-val red">Very fast</div></div>
+        <div class="estat"><div class="estat-lbl">Warning</div><div class="estat-val">Scream sound</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Hide in alcove</div></div>
+        <div class="estat"><div class="estat-lbl">Floor</div><div class="estat-val purple">The Rooms</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Freeze</div>
+      <div class="ename">A-90</div>
+      <p class="edesc">Appears without warning as a terrifying face filling the player's screen. The only counter is to completely stop all inputs — mouse movement, keyboard, everything — until it vanishes (~3–5 seconds). Any movement at all causes instant death. With the "Stop Right There" modifier, A-90 can also spawn in standard Hotel/Mines rooms.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">Instant kill</div></div>
+        <div class="estat"><div class="estat-lbl">Warning</div><div class="estat-val">None — sudden</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Freeze entirely</div></div>
+        <div class="estat"><div class="estat-lbl">Duration</div><div class="estat-val">3–5 seconds</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Sprinter (Upgraded)</div>
+      <div class="ename">A-120</div>
+      <p class="edesc">A faster, more dangerous variant of A-60 that appears in deeper sections of The Rooms. Moves significantly quicker, giving less time to reach an alcove. Not present in The Greenhouse. Can appear alongside A-60. Does not spawn in The Outdoors.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Speed</div><div class="estat-val red">Extreme</div></div>
+        <div class="estat"><div class="estat-lbl">Warning</div><div class="estat-val">Scream (less time)</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Alcove — fast</div></div>
+        <div class="estat"><div class="estat-lbl">Floor</div><div class="estat-val purple">The Rooms (deep)</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Timer</div>
+      <div class="ename">Haste</div>
+      <p class="edesc">Exclusive to The Backdoor dimension. Haste attacks when a timer runs down to zero. Players must activate levers scattered throughout The Backdoor to reset the timer and prevent Haste from striking. The "Make Haste" modifier enables this timer-lever mechanic in regular floors too.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Trigger</div><div class="estat-val red">Timer hits zero</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Activate levers</div></div>
+        <div class="estat"><div class="estat-lbl">Floor</div><div class="estat-val purple">The Backdoor</div></div>
+        <div class="estat"><div class="estat-lbl">Modifier</div><div class="estat-val">Make Haste</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="sub-h">The Mines — Exclusive Entities</p>
+  <div class="entities-grid">
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Swarm</div>
+      <div class="ename">Grumble</div>
+      <p class="edesc">Large bat-like creatures found throughout The Mines. Regular Grumbles can be banished with a Crucifix ("Not Funny" achievement). They patrol in groups and will swarm the player on detection. Make noise similar to Rush but distinct — listen for the wing-flapping sound. The "Bug Bomb" achievement rewards using a special item against them.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">Moderate</div></div>
+        <div class="estat"><div class="estat-lbl">Warning</div><div class="estat-val">Wing-flapping sound</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Crucifix / hide</div></div>
+        <div class="estat"><div class="estat-lbl">Floor</div><div class="estat-val">Mines</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Boss Swarm</div>
+      <div class="ename">Queen Grumble</div>
+      <p class="edesc">The massive Grumble queen encountered in The Nest at door 150. Cannot be banished by a regular Crucifix. Players must activate all anchor points while avoiding Queen Grumble and her swarm. The "The Bigger They Are" achievement originally required crucifying Queen Grumble, but regular Grumbles can now also earn the original badge variant.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">High</div></div>
+        <div class="estat"><div class="estat-lbl">Crucifix</div><div class="estat-val red">Cannot banish</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Activate anchors</div></div>
+        <div class="estat"><div class="estat-lbl">Room</div><div class="estat-val">The Nest (150)</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Void</div>
+      <div class="ename">Dread</div>
+      <p class="edesc">A shadowy entity found exclusively in The Mines. Immobilizes the player when it catches them, triggering a brief countdown. If another player doesn't free the caught player in time, the caught player dies. The "It's Not My Time" achievement is earned by surviving a Dread encounter. Its speed can be modified by "Sorry To Cut It Short" and "Time Flies" modifiers.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Effect</div><div class="estat-val red">Immobilizes player</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Teammate rescue</div></div>
+        <div class="estat"><div class="estat-lbl">Floor</div><div class="estat-val">Mines</div></div>
+        <div class="estat"><div class="estat-lbl">Achievement</div><div class="estat-val">It's Not My Time</div></div>
+      </div>
+    </div>
+
+    <div class="entity-card hostile">
+      <div class="etype hostile">Hostile · Outdoors</div>
+      <div class="ename">Groundskeeper</div>
+      <p class="edesc">The primary entity of The Outdoors floor. Patrols the outdoor environment and attacks players detected in its patrol zone. Can be activated in standard floors with the "Sodded" modifier (requires "Down The Water Spout" unlock). Unique in that it has patrol routes tied to outdoor landmarks rather than room-based spawning.</p>
+      <div class="estats">
+        <div class="estat"><div class="estat-lbl">Damage</div><div class="estat-val red">High</div></div>
+        <div class="estat"><div class="estat-lbl">Detection</div><div class="estat-val">Patrol zone entry</div></div>
+        <div class="estat"><div class="estat-lbl">Counter</div><div class="estat-val green">Avoid patrol</div></div>
+        <div class="estat"><div class="estat-lbl">Floor</div><div class="estat-val">The Outdoors</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="info-box red">
+    <strong>⚠ Health Warning</strong>
+    Health in DOORS does not regenerate passively at any point. Every entity hit accumulates. A player at 20 HP is one Rush encounter from death. Manage healing items aggressively — use Bandages after any hit, save Vitamins for difficult sections like the Library and Electrical Room, and always carry at least one Lotus or Starfish if available.
+  </div>
+
+</section>
+
+<div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+<!-- ===== 04 ITEMS ===== -->
+<section class="wiki-section" id="items">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <div><h2 class="section-title">Items</h2><p class="section-desc">Everything findable, buyable, and usable across all floors</p></div>
+  </div>
+  <p class="chapter-intro">Items are found in shelves, drawers, and chests — or purchased at Jeff's shop with Gold. Each has limited uses. Inventory space is finite. Prioritize healing and light sources above everything else, then utility items depending on your run's needs.</p>
+
+  <p class="sub-h">Healing & Survival</p>
+  <div class="items-grid">
+    <div class="item-card"><div class="item-icon">🩹</div><div class="rarity r-common">Common</div><div class="iname">Bandage</div><p class="idesc">Restores 20 HP instantly. Most common healing item. Stack as many as possible throughout the run. Found in drawers constantly.</p><div class="iprice">💰 ~5–15 Gold</div></div>
+    <div class="item-card"><div class="item-icon">💊</div><div class="rarity r-uncommon">Uncommon</div><div class="iname">Vitamins</div><p class="idesc">Fully restores HP to 100 and temporarily boosts movement speed. Best saved for the Library or Room 100 sequences. Very valuable.</p><div class="iprice">💰 ~60–80 Gold</div></div>
+    <div class="item-card"><div class="item-icon">🧪</div><div class="rarity r-epic">Epic</div><div class="iname">Starfish / Lotus</div><p class="idesc">Revives the player on death with minimal HP in place, once per item. The Lotus (Floor 2+) is the updated version. Buy immediately when Jeff stocks it — it's the single most valuable item in the game.</p><div class="iprice">💰 ~200 Gold</div></div>
+    <div class="item-card"><div class="item-icon">⚡</div><div class="rarity r-rare">Rare</div><div class="iname">Adrenaline</div><p class="idesc">Temporarily boosts sprint speed significantly for ~15 seconds. Critical during Seek chase sequences. Equip it the moment you hear Seek's chase music begin.</p><div class="iprice">💰 ~55 Gold</div></div>
+    <div class="item-card"><div class="item-icon">🍬</div><div class="rarity r-uncommon">Uncommon</div><div class="iname">Sugar</div><p class="idesc">Grants a brief speed and agility boost. Minor but useful in the early hotel sections. Does not heal.</p><div class="iprice">💰 ~10 Gold</div></div>
+    <div class="item-card"><div class="item-icon">🌿</div><div class="rarity r-epic">Epic</div><div class="iname">Herb of Viridis</div><p class="idesc">A rare herb that unlocks a secret section in Jeff's shop when brought to him. Enables the "Herb of Viridis" achievement and causes El Goblino's statue to appear in Jeff's room.</p><div class="iprice">💰 Found only</div></div>
+  </div>
+
+  <p class="sub-h">Light Sources</p>
+  <div class="items-grid">
+    <div class="item-card"><div class="item-icon">🔦</div><div class="rarity r-common">Common</div><div class="iname">Flashlight</div><p class="idesc">Directional light source with a rechargeable battery. Toggle on/off to conserve charge. Prevents Screech from spawning in lit rooms. The most important tool in the game — always carry one.</p><div class="iprice">💰 ~25 Gold</div></div>
+    <div class="item-card"><div class="item-icon">🕯️</div><div class="rarity r-common">Common</div><div class="iname">Lighter</div><p class="idesc">Unlimited-use but very short-range light. Effective at keeping Screech away. Use as a backup when the Flashlight battery dies.</p><div class="iprice">💰 Found / Free</div></div>
+    <div class="item-card"><div class="item-icon">🕯️</div><div class="rarity r-rare">Rare</div><div class="iname">Candle</div><p class="idesc">A candle providing ambient light in all directions. Burns down over time. Found in Rifts and certain rooms. More durable than a Lighter but less directional than a Flashlight.</p><div class="iprice">💰 Found / Rift</div></div>
+    <div class="item-card"><div class="item-icon">🌀</div><div class="rarity r-epic">Epic</div><div class="iname">Possessed Candle</div><p class="idesc">A rare candle variant found exclusively through Rifts. Interacting with it and answering its prompt earns the "Lost In Translation" achievement. Has unusual and slightly unsettling behavior.</p><div class="iprice">💰 Rift only</div></div>
+  </div>
+
+  <p class="sub-h">Tools & Utility</p>
+  <div class="items-grid">
+    <div class="item-card"><div class="item-icon">🔑</div><div class="rarity r-uncommon">Uncommon</div><div class="iname">Key (Gold/Standard)</div><p class="idesc">Opens locked doors blocking progression or leading to bonus loot rooms. Gold Keys open high-value locked rooms. Multiple key types exist throughout the floors.</p><div class="iprice">💰 ~35–60 Gold</div></div>
+    <div class="item-card"><div class="item-icon">🗝️</div><div class="rarity r-rare">Rare</div><div class="iname">Skeleton Key</div><p class="idesc">A master key that can open any locked door. Required for the "Detour" path in The Courtyard area. Single use. Very valuable in runs with many locked rooms.</p><div class="iprice">💰 ~300 Gold (Jeff)</div></div>
+    <div class="item-card"><div class="item-icon">🔧</div><div class="rarity r-rare">Rare</div><div class="iname">Lockpick</div><p class="idesc">Picks any standard locked door without a key. Single use. "Improvise" achievement earned from using it on a Generator instead of a fuse (niche use).</p><div class="iprice">💰 ~50 Gold</div></div>
+    <div class="item-card"><div class="item-icon">✂️</div><div class="rarity r-uncommon">Uncommon</div><div class="iname">Shears</div><p class="idesc">Found in The Courtyard. Used to cut vine-covered doors, opening the secret Detour path. Required for the "Detour" achievement. Only one meaningful use per run.</p><div class="iprice">💰 Found only</div></div>
+    <div class="item-card"><div class="item-icon">🛡️</div><div class="rarity r-epic">Epic</div><div class="iname">Crucifix</div><p class="idesc">Banishes Rush, Ambush, Screech, Grumble, Dread, Halt, and Seek mid-encounter. Temporarily paralyzes Eyes and Figure (cannot banish them). One use. Multiple crucifix achievements exist per entity banished. Rare in drawers, buyable at Jeff.</p><div class="iprice">💰 ~300 Gold</div></div>
+    <div class="item-card"><div class="item-icon">👁️</div><div class="rarity r-rare">Rare</div><div class="iname">Inhibitor</div><p class="idesc">Drastically reduces Figure's hearing range during the Library and Electrical Room encounters. Makes the two Figure encounters dramatically more manageable. Highly recommended purchase if Jeff stocks it.</p><div class="iprice">💰 ~250 Gold</div></div>
+  </div>
+</section>
+
+<div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+<!-- ===== 05 MODIFIERS ===== -->
+<section class="wiki-section" id="modifiers">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <div><h2 class="section-title">Modifiers</h2><p class="section-desc">All 80 run-altering modifiers — with their exact effects and Knob bonuses</p></div>
+  </div>
+  <p class="chapter-intro">Modifiers are unlocked by completing The Hotel without dying (enabling the Modifiers menu). Additional modifiers unlock via specific badges. Negative modifiers add bonus Knob multipliers on run completion. The maximum bonus is +150% before it becomes halved; the minimum is capped at −90%. There are currently 80 modifiers (including Admin Panel). Completing The Hotel with +50% bonus earns "Not Five Stars"; +150% earns "Hotel Hell." The Mines equivalents are "Rocky Road" (+50%) and "A Hard Place" (+150%).</p>
+
+  <div class="info-box purple">
+    <strong>🔓 How to Unlock</strong>
+    The Modifiers menu is unlocked by completing The Hotel without dying at least once. Individual modifiers unlock through specific badges. Some require "Not Five Stars," "Hotel Hell," or other achievement prerequisites. Random modifiers (Uh Oh, How Unfortunate, Chaos Chaos) can select from any unlocked modifier pool.
+  </div>
+
+  <p class="sub-h">Random Modifiers</p>
+  <div class="mod-table-wrap">
+  <table class="mod-table">
+    <thead><tr><th>Modifier</th><th>Effect</th><th>Bonus</th><th>Category</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><div class="mod-name">Uh Oh</div></td><td>Activates 1 random modifier</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-random">Random</span></td><td>Cannot combine with How Unfortunate or Chaos Chaos</td></tr>
+      <tr><td><div class="mod-name">How Unfortunate</div></td><td>Activates 3 random modifiers</td><td class="mod-bonus bonus-pos">+30%</td><td><span class="mod-cat cat-random">Random</span></td><td>Cannot combine with Uh Oh or Chaos Chaos</td></tr>
+      <tr><td><div class="mod-name">Chaos, Chaos</div></td><td>Activates 5 random modifiers</td><td class="mod-bonus bonus-pos">+50%</td><td><span class="mod-cat cat-random">Random</span></td><td>Requires Not Five Stars. Cannot combine with the above two</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="sub-h">Lighting Modifiers</p>
+  <div class="mod-table-wrap">
+  <table class="mod-table">
+    <thead><tr><th>Modifier</th><th>Effect</th><th>Bonus</th><th>Category</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><div class="mod-name">Lights On</div></td><td>Fewer dark rooms — rooms are brighter overall</td><td class="mod-bonus bonus-neg">−25%</td><td><span class="mod-cat cat-light">Lighting</span></td><td>Removed as of Content Update (didn't do enough)</td></tr>
+      <tr><td><div class="mod-name">Electrical Work</div></td><td>Lights never flicker or break; no entity light warnings</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-light">Lighting</span></td><td>Cannot combine with Bad Electrical Work, Power Shortage, Lights Out</td></tr>
+      <tr><td><div class="mod-name">Bad Electrical Work</div></td><td>More dark rooms; lights flicker and break randomly without entities</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-light">Lighting</span></td><td>Cannot combine with Electrical Work, Power Shortage, Lights Out</td></tr>
+      <tr><td><div class="mod-name">Power Shortage</div></td><td>Most rooms dark; lights flicker/break even more often, even during attacks</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-light">Lighting</span></td><td>Cannot combine with Electrical Work, Bad Electrical Work, Lights Out</td></tr>
+      <tr><td><div class="mod-name">Lights Out</div></td><td>All rooms are completely dark — no ambient lighting whatsoever</td><td class="mod-bonus bonus-pos">+25%</td><td><span class="mod-cat cat-light">Lighting</span></td><td>Requires Not Five Stars. Screech now spawns with this active (post-Backdoor update)</td></tr>
+      <tr><td><div class="mod-name">Bad Ventilation</div></td><td>Adds fog throughout, significantly limiting vision distance</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-light">Lighting</span></td><td>Available on all floors</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="sub-h">Loot & Economy Modifiers</p>
+  <div class="mod-table-wrap">
+  <table class="mod-table">
+    <thead><tr><th>Modifier</th><th>Effect</th><th>Bonus</th><th>Category</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><div class="mod-name">El Goblino On Break</div></td><td>More gold can be found in drawers and shelves</td><td class="mod-bonus bonus-neg">−50%</td><td><span class="mod-cat cat-loot">Loot</span></td><td>Removed as of Content Update</td></tr>
+      <tr><td><div class="mod-name">El Goblino Was Here</div></td><td>Less gold found overall</td><td class="mod-bonus bonus-pos">+5%</td><td><span class="mod-cat cat-loot">Loot</span></td><td>Cannot combine with El Goblino's Payday</td></tr>
+      <tr><td><div class="mod-name">El Goblino's Payday</div></td><td>No gold can be found anywhere in the floor</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-loot">Loot</span></td><td>Requires Not Five Stars. Cannot combine with El Goblino Was Here</td></tr>
+      <tr><td><div class="mod-name">More Stuff</div></td><td>Extra items spawn in drawers/chests</td><td class="mod-bonus bonus-neg">−50%</td><td><span class="mod-cat cat-loot">Loot</span></td><td>Does not remove progress — useful for getting Crucifix achievements</td></tr>
+      <tr><td><div class="mod-name">Less Stuff</div></td><td>Fewer items spawn throughout the floor</td><td class="mod-bonus bonus-pos">+5%</td><td><span class="mod-cat cat-loot">Loot</span></td><td>Available on all floors</td></tr>
+      <tr><td><div class="mod-name">Wear And Tear</div></td><td>Items are partially broken — flashlights, lighters have reduced fuel time (halved)</td><td class="mod-bonus bonus-pos">+5%</td><td><span class="mod-cat cat-loot">Loot</span></td><td>Affects all consumable fuel items</td></tr>
+      <tr><td><div class="mod-name">Out Of Stuff</div></td><td>No non-essential items are available to loot (healing/tools removed)</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-loot">Loot</span></td><td>Gold and keys may still spawn</td></tr>
+      <tr><td><div class="mod-name">Locked And Loaded</div></td><td>More rooms have locked doors requiring keys to progress</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-loot">Loot</span></td><td>Available on all floors</td></tr>
+      <tr><td><div class="mod-name">Key Key Key Key</div></td><td>All rooms have locked doors</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-loot">Loot</span></td><td>Requires Locked And Loaded to be at max</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="sub-h">Player Modifiers</p>
+  <div class="mod-table-wrap">
+  <table class="mod-table">
+    <thead><tr><th>Modifier</th><th>Effect</th><th>Bonus</th><th>Category</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><div class="mod-name">Tripped</div></td><td>Start the run at 50 HP instead of 100</td><td class="mod-bonus bonus-pos">+5%</td><td><span class="mod-cat cat-player">Player</span></td><td>Cannot combine with Tripped And Fell or Last Few Breaths</td></tr>
+      <tr><td><div class="mod-name">Tripped And Fell</div></td><td>Start the run at very low HP (~25)</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-player">Player</span></td><td>Cannot combine with Tripped or Last Few Breaths</td></tr>
+      <tr><td><div class="mod-name">Last Few Breaths</div></td><td>Start at 50 HP maximum (reduced cap)</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-player">Player</span></td><td>Cannot combine with Tripped or Tripped And Fell</td></tr>
+      <tr><td><div class="mod-name">Last Breath</div></td><td>Any damage taken results in instant death</td><td class="mod-bonus bonus-pos">+20%</td><td><span class="mod-cat cat-player">Player</span></td><td>Extremely punishing — one-shot by everything</td></tr>
+      <tr><td><div class="mod-name">Injuries</div></td><td>Movement speed reduced by 1% for every 2% of missing HP — up to ~50% slower at low health</td><td class="mod-bonus bonus-pos">+5%</td><td><span class="mod-cat cat-player">Player</span></td><td>Encourages keeping HP topped up at all times</td></tr>
+      <tr><td><div class="mod-name">My Knees Are Killing Me</div></td><td>Crouch speed reduced by ~65%</td><td class="mod-bonus bonus-pos">+5%</td><td><span class="mod-cat cat-player">Player</span></td><td>Devastating in the Library — Halt is compensated (slows to match player speed)</td></tr>
+      <tr><td><div class="mod-name">My Legs Are Killing Me</div></td><td>Normal walking speed reduced by ~25%</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-player">Player</span></td><td>Halt is slowed to compensate. Cannot combine with Didn't Skip Leg Day modifiers</td></tr>
+      <tr><td><div class="mod-name">Wet Floor</div></td><td>Slippery floors — reduced traction and momentum control</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-player">Player</span></td><td>Fixed as of The Great Outdoors update (was broken in Mines previously)</td></tr>
+      <tr><td><div class="mod-name">Didn't Skip Leg Day</div></td><td>Movement speed significantly increased</td><td class="mod-bonus bonus-neg">−50%</td><td><span class="mod-cat cat-player">Player</span></td><td>Cannot combine with Faster Faster Faster or MAXIMUM OVERDRIVE</td></tr>
+      <tr><td><div class="mod-name">Faster, Faster, Faster</div></td><td>Movement speed greatly increased</td><td class="mod-bonus bonus-neg">−75%</td><td><span class="mod-cat cat-player">Player</span></td><td>No game progress. Named after Octane voiceline in Apex Legends</td></tr>
+      <tr><td><div class="mod-name">MAXIMUM OVERDRIVE</div></td><td>Movement speed dramatically increased — nearly uncontrollable</td><td class="mod-bonus bonus-neg">−125%</td><td><span class="mod-cat cat-player">Player</span></td><td>No game progress. Also named after a modifier in-game culture reference</td></tr>
+      <tr><td><div class="mod-name">Nowhere To Hide</div></td><td>Significantly fewer hiding spots; removes the 2-hiding-spot requirement for entities to spawn</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-player">Player</span></td><td>Does not fully remove all hiding spots</td></tr>
+      <tr><td><div class="mod-name">Jammin'</div></td><td>Plays music throughout the run — dulls all audio cues making sound detection unreliable</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-player">Player</span></td><td>Music volume can only be adjusted via Roblox/device volume; does not affect Jeff's Jingle</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="sub-h">Entity Modifiers</p>
+  <div class="mod-table-wrap">
+  <table class="mod-table">
+    <thead><tr><th>Modifier</th><th>Effect</th><th>Bonus</th><th>Category</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><div class="mod-name">Really Bad Time</div></td><td>Many more entity encounters overall</td><td class="mod-bonus bonus-pos">+20%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Affects all entity types proportionally</td></tr>
+      <tr><td><div class="mod-name">Worst Time Ever</div></td><td>Entities will not leave you alone — near-constant spawn pressure. Rush can now spawn on a timer if you stay in a room too long</td><td class="mod-bonus bonus-pos">+25%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>One of the hardest general entity modifiers</td></tr>
+      <tr><td><div class="mod-name">Rush Hour</div></td><td>Rush attacks more frequently</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Cannot be selected on console (known bug). Hotel-only: Rush Around variant available</td></tr>
+      <tr><td><div class="mod-name">I'm Runnin' Here</div></td><td>Rush moves faster than normal</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Less time to reach a hiding spot after the flicker warning</td></tr>
+      <tr><td><div class="mod-name">I'm Tip-Toein' Here</div></td><td>Rush emits no sound — completely silent approach</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Requires Stay Out Of My Way badge. Screen still shakes when Rush is near; lights still flicker</td></tr>
+      <tr><td><div class="mod-name">Rush Around</div></td><td>Rush can attack from the door ahead instead of behind</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Requires See You Soon badge. Hotel only</td></tr>
+      <tr><td><div class="mod-name">Rent's Due</div></td><td>Hide entity ejects players faster than normal</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Dramatically shortens hiding window</td></tr>
+      <tr><td><div class="mod-name">Wrong Number</div></td><td>Dupe spawns more frequently and increases in difficulty</td><td class="mod-bonus bonus-pos">+5%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Cannot combine with Battle Of Wits</td></tr>
+      <tr><td><div class="mod-name">Battle Of Wits</div></td><td>Dupe almost always spawns and is at maximum difficulty — spawns in every multi-exit room, makes no sound, immediately scrambles door numbers</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Requires Outwitted badge. Cannot combine with Wrong Number</td></tr>
+      <tr><td><div class="mod-name">I'm Everywhere</div></td><td>Screech can attack in any room, not just dark rooms</td><td class="mod-bonus bonus-pos">+5%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Hotel only. Cannot spawn in rooms 0 or 1 even with this modifier</td></tr>
+      <tr><td><div class="mod-name">Think Fast</div></td><td>Screech attacks more frequently and gives less reaction time</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Cannot combine with Think Faster</td></tr>
+      <tr><td><div class="mod-name">Think Faster</div></td><td>Screech attacks even more frequently with even less reaction time</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Cannot combine with Think Fast</td></tr>
+      <tr><td><div class="mod-name">Watch Your Step</div></td><td>Snares appear throughout the floor (not just their natural zones)</td><td class="mod-bonus bonus-pos">+5%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Fixed Dec 2024 — previously did nothing in Mines</td></tr>
+      <tr><td><div class="mod-name">Are Those Pancakes?</div></td><td>Snares spawn more often</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Stacks with Watch Your Step</td></tr>
+      <tr><td><div class="mod-name">I Love Pancakes!!!</div></td><td>Lots of Snares — they now deal lethal damage (one-shot)</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Makes floor traversal extremely hazardous</td></tr>
+      <tr><td><div class="mod-name">Roundabout</div></td><td>Halt moves faster and the "TURN AROUND" screen prompt is removed (only Halt's eyes flash)</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Requires Two Steps Forward badge</td></tr>
+      <tr><td><div class="mod-name">Stop Right There</div></td><td>A-90 can spawn in normal Hotel/Mines rooms (not just The Rooms)</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Requires Stop Right There achievement. A-90 can spawn alongside Rush</td></tr>
+      <tr><td><div class="mod-name">Room For More</div></td><td>A-60 and A-120 can spawn in normal Hotel/Mines rooms</td><td class="mod-bonus bonus-pos">+20%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>A-60/A-120 do NOT spawn in Greenhouse. A-90 still spawns independently</td></tr>
+      <tr><td><div class="mod-name">Blitz, Oh</div></td><td>Blitz (Backdoor variant rush) attacks but does not rebound — unless Make Haste is also active</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-entity">Entity</span></td><td>Requires Other Way Around. Backdoor-related modifier</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="sub-h">Special / Backdoor Modifiers</p>
+  <div class="mod-table-wrap">
+  <table class="mod-table">
+    <thead><tr><th>Modifier</th><th>Effect</th><th>Bonus</th><th>Category</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><div class="mod-name">Other Way Around</div></td><td>Enables Backdoor dimension access and enables Backdoor-specific modifiers</td><td class="mod-bonus bonus-zero">+0%</td><td><span class="mod-cat cat-special">Special</span></td><td>Required prerequisite for Vacuum Sealed, Make Haste, and Blitz Oh</td></tr>
+      <tr><td><div class="mod-name">Vacuum Sealed</div></td><td>Some doors lead to dead ends (like in The Backdoor)</td><td class="mod-bonus bonus-pos">+10%</td><td><span class="mod-cat cat-special">Special</span></td><td>Requires Other Way Around badge</td></tr>
+      <tr><td><div class="mod-name">Make Haste</div></td><td>The Backdoor's timer and levers appear. Haste attacks if the timer reaches 0</td><td class="mod-bonus bonus-pos">+20%</td><td><span class="mod-cat cat-special">Special</span></td><td>Requires Other Way Around. Large rooms (sideroom corridor, basement) consume lots of timer time</td></tr>
+      <tr><td><div class="mod-name">Sodded</div></td><td>The Groundskeeper from The Outdoors has a chance to attack</td><td class="mod-bonus bonus-pos">+15%</td><td><span class="mod-cat cat-special">Special</span></td><td>Requires Down The Water Spout badge</td></tr>
+      <tr><td><div class="mod-name">Voice Acting</div></td><td>Activates the April Fools 2024 voicelines for entities</td><td class="mod-bonus bonus-neg">−20%</td><td><span class="mod-cat cat-special">Special</span></td><td>Many voicelines are broken — Ambush, Figure, El Goblino all have non-functional lines</td></tr>
+      <tr><td><div class="mod-name">PARTY MODE</div></td><td>Formerly Ranked Mode — cosmetic party aesthetic</td><td class="mod-bonus bonus-zero">No Progress</td><td><span class="mod-cat cat-special">Special</span></td><td>Cannot combine with any other modifier. No achievements or progress</td></tr>
+      <tr><td><div class="mod-name">ADMIN PANEL</div></td><td>Spawn entities, items, and troll friends. No progress/knobs/rift</td><td class="mod-bonus bonus-neg">No Knobs</td><td><span class="mod-cat cat-special">Special</span></td><td>Requires 499 Robux gamepass. Available on all floors</td></tr>
+      <tr><td><div class="mod-name">RANDOM EVENTS</div></td><td>Enables random events; optionally lets Twitch/YouTube chat choose events</td><td class="mod-bonus bonus-zero">No Progress</td><td><span class="mod-cat cat-special">Special</span></td><td>No Rift. All floors (some require Admin Panel)</td></tr>
+      <tr><td><div class="mod-name">CUSTOM SEED</div></td><td>Makes room generation and most events consistent across playthroughs</td><td class="mod-bonus bonus-zero">No Progress</td><td><span class="mod-cat cat-special">Special</span></td><td>Updates and patches may cause seed changes. No Rift</td></tr>
+      <tr><td><div class="mod-name">Trick Or Treat</div></td><td>2024 Halloween event modifier — find and eat Candy for random positive, neutral, or negative effects</td><td class="mod-bonus bonus-zero">No Progress</td><td><span class="mod-cat cat-special">Special</span></td><td>Event-only. No Rift. Available all floors with Admin Panel on non-Hotel floors</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="info-box">
+    <strong>💡 Modifier Strategy</strong>
+    For maximum Knob rewards: stack Rush Hour + I'm Runnin' Here + Bad Electrical Work + Battle Of Wits + Worst Time Ever for a punishing but high-yield combination. For solo runs, Rush Hour + Last Breath + Lights Out is considered one of the hardest stacks. The Chaos Chaos modifier (+50%) is efficient for casual high-bonus runs since you don't choose the modifiers. "Hotel Hell" (+150%) requires extremely careful modifier stacking — reach it by combining multiple +10–25% modifiers without using any negative (−%) ones.
+  </div>
+</section>
+
+<div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+<!-- ===== 06 RARITIES ===== -->
+<section class="wiki-section" id="rarities">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <div><h2 class="section-title">Rarities</h2><p class="section-desc">Item drop tiers — what they mean and what to look for</p></div>
+  </div>
+  <div class="rarity-grid">
+    <div class="rarity-card"><h3><span style="color:#aaa">◆</span> Common</h3><p>The baseline drop tier. Found constantly in drawers throughout the run. Pick up early but don't fill inventory with only these.</p><ul><li>Bandage — 20 HP heal</li><li>Lighter — basic unlimited light</li><li>Small Gold amounts (1–10)</li><li>Flashlight — basic directional light</li><li>Standard Keys</li></ul></div>
+    <div class="rarity-card"><h3><span style="color:#27ae60">◆</span> Uncommon</h3><p>Appears every 5–15 rooms on average. Meaningful utility — generally worth keeping over commons when inventory space is tight.</p><ul><li>Vitamins — full HP + speed</li><li>Candle — area ambient light</li><li>Shears — vine door only</li><li>Mid Gold clusters (10–30)</li><li>Lockpick — bypasses locks</li></ul></div>
+    <div class="rarity-card"><h3><span style="color:#3498db">◆</span> Rare</h3><p>Genuinely exciting to find in a drawer. These items can shift the difficulty curve of an entire section significantly.</p><ul><li>Adrenaline — sprint boost</li><li>Skeleton Key — opens any door</li><li>Possessed Candle — Rift only</li><li>Gold Key — premium lock</li><li>Inhibitor — reduces Figure hearing</li></ul></div>
+    <div class="rarity-card"><h3><span style="color:#9b59b6">◆</span> Epic</h3><p>High-impact items rarely found through normal looting. Primarily obtainable from Jeff's shop. Can single-handedly save a run from failure.</p><ul><li>Crucifix — banish entities</li><li>Lotus / Starfish — revive on death</li><li>Herb of Viridis — Jeff secret unlock</li><li>Large Gold clusters (30–60)</li></ul></div>
+    <div class="rarity-card"><h3><span style="color:#f39c12">◆</span> Legendary</h3><p>Extraordinarily rare — finding one in a drawer is a genuine surprise. These drastically alter a run's outcome.</p><ul><li>Very large Gold deposits (60+)</li><li>Rare Crucifix variants</li><li>Special lore documents</li><li>Unique event-adjacent items</li></ul></div>
+    <div class="rarity-card"><h3><span style="color:#e74c3c">◆</span> Event</h3><p>Only obtainable during active seasonal events. Cannot be found or purchased outside the event window. Often cosmetic or novelty.</p><ul><li>Trick Or Treat Candy items</li><li>Holiday-themed cosmetic drops</li><li>Event-exclusive loot</li></ul></div>
+  </div>
+</section>
+
+<div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+<!-- ===== 07 ACHIEVEMENTS ===== -->
+<section class="wiki-section" id="achievements">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <div><h2 class="section-title">Achievements</h2><p class="section-desc">The complete badge list — all floors, entities, modifiers, events, and secrets</p></div>
+  </div>
+  <p class="chapter-intro">DOORS has 120+ achievements (badges) spanning all floors, entities, modifiers, events, and secret conditions. Some are secret and don't count toward progression. Below is the complete current list organized by category. Achievements marked "Secret" are hidden until obtained. Achievements marked "Limited" were time-restricted events and are unobtainable.</p>
+
+  <p class="sub-h">General / Starting</p>
+  <div class="ach-grid">
+    <div class="ach-card"><div class="ach-icon">👋</div><div class="ach-body"><div class="ach-name">Welcome</div><div class="ach-req">Join DOORS for the first time. Awarded automatically on first entry to the lobby.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🔙</div><div class="ach-body"><div class="ach-name">Welcome Back</div><div class="ach-req">Return to the lobby after completing or dying in a run. Secret badge for returning players.</div><span class="ach-badge b-secret">Secret</span></div></div>
+    <div class="ach-card"><div class="ach-icon">👥</div><div class="ach-body"><div class="ach-name">Buddy System</div><div class="ach-req">Play in a session with at least one other player. Can be obtained with any number of players present.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">💀</div><div class="ach-body"><div class="ach-name">Back From the Dead</div><div class="ach-req">Survive death using a Starfish or Lotus revival item. The revival item must successfully trigger.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">👑</div><div class="ach-body"><div class="ach-name">Group Member</div><div class="ach-req">Join the official LSPLASH Roblox group. Rewards a free revival item as a bonus. Obtainable before entering a match.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">💸</div><div class="ach-body"><div class="ach-name">Pls Donate</div><div class="ach-req">Fill Jeff's donation jar by tipping all your excess Gold. Unlocks a special booth in the Roblox game "PLS DONATE."</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌿</div><div class="ach-body"><div class="ach-name">Herb of Viridis</div><div class="ach-req">Bring the Herb of Viridis item to Jeff's shop. Unlocks a secret item section and spawns El Goblino's statue.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🔢</div><div class="ach-body"><div class="ach-name">One of Many</div><div class="ach-req">Die for the first time in DOORS. Awarded on your first death regardless of cause.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">💀</div><div class="ach-body"><div class="ach-name">Ten of Many</div><div class="ach-req">Die a total of 10 times across all runs (lifetime counter).</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">☠️</div><div class="ach-body"><div class="ach-name">Hundred of Many</div><div class="ach-req">Die a total of 100 times across all runs. Takes dedicated (or very bad) play to unlock.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🕯️</div><div class="ach-body"><div class="ach-name">Interconnected</div><div class="ach-req">Enter a Rift portal. Rifts are rare purple swirling portals that occasionally spawn in rooms.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌀</div><div class="ach-body"><div class="ach-name">Lost In Translation</div><div class="ach-req">Interact with the Possessed Candle found inside a Rift and answer its prompt. Rare spawn — may require many runs to find.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">⚡</div><div class="ach-body"><div class="ach-name">Expert Technician</div><div class="ach-req">Complete the Hotel's breaker puzzle (Room 100) in under one minute. Can still be achieved if you fail and re-enter the puzzle room.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🔧</div><div class="ach-body"><div class="ach-name">Improvise</div><div class="ach-req">Use a Lockpick on a Generator instead of a fuse. A niche use of the Lockpick item — requires intentionally doing the wrong thing.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🛒</div><div class="ach-body"><div class="ach-name">Supporting Small Businesses</div><div class="ach-req">Talk to El Goblino. Simply interact with the small wandering entity in the early Hotel rooms.</div><span class="ach-badge b-easy">Easy</span></div></div>
+  </div>
+
+  <p class="sub-h">Entity Survival & Entity Kills</p>
+  <div class="ach-grid">
+    <div class="ach-card"><div class="ach-icon">🏃</div><div class="ach-body"><div class="ach-name">Out Of My Way</div><div class="ach-req">Survive an A-60 encounter in The Rooms. Successfully hide in an alcove while A-60 charges through.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">👀</div><div class="ach-body"><div class="ach-name">Look At Me</div><div class="ach-req">Survive a Screech encounter by looking directly at it within the reaction window.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🔄</div><div class="ach-body"><div class="ach-name">Rebound</div><div class="ach-req">Survive an Ambush encounter — Ambush sweeps through the room multiple times.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">👁️</div><div class="ach-body"><div class="ach-name">I See You</div><div class="ach-req">Die to Eyes. The first time you fail to look away from the floating eyes mass, this triggers.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌀</div><div class="ach-body"><div class="ach-name">Error</div><div class="ach-req">Die to Glitch. The Glitch entity (a screen distortion) teleports the player backwards — getting killed in the confusion earns this.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🚪</div><div class="ach-body"><div class="ach-name">Wrong Room</div><div class="ach-req">Die by entering a Dupe door — opened a door with the wrong sequential number and took damage.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🕷️</div><div class="ach-body"><div class="ach-name">Meet Timothy</div><div class="ach-req">Encounter Timothy (the spider) by opening a drawer it hides in. Unavoidable RNG.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">💃</div><div class="ach-body"><div class="ach-name">Two Steps Forward...</div><div class="ach-req">Survive a Halt encounter by correctly turning around in the looping hallway.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🏃</div><div class="ach-body"><div class="ach-name">You Can Run</div><div class="ach-req">Survive a Seek chase sequence. Reach the end of Seek's hallway without being caught.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🗄️</div><div class="ach-body"><div class="ach-name">In Plain Sight</div><div class="ach-req">Successfully hide from Rush or Ambush by using a wardrobe or under-bed hiding spot without being ejected by Hide.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🐍</div><div class="ach-body"><div class="ach-name">Eviction Notice</div><div class="ach-req">Get ejected from a hiding spot by the Hide entity. Stay in a wardrobe or under-bed spot too long.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🧠</div><div class="ach-body"><div class="ach-name">Outwitted</div><div class="ach-req">Survive a Dupe encounter — successfully avoid opening a Dupe-disguised door by checking the number.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🙈</div><div class="ach-body"><div class="ach-name">Betrayal</div><div class="ach-req">Die at the hands of Figure in either the Library (door 50) or the Electrical Room (door 100).</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🤫</div><div class="ach-body"><div class="ach-name">Sshh!</div><div class="ach-req">Escape the Library (door 50) without being grabbed by Figure at all. Full silent traversal required.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🐜</div><div class="ach-body"><div class="ach-name">Not Funny</div><div class="ach-req">Use a Crucifix to banish a Grumble in The Mines. Standard Grumbles (not Queen) can be crucified.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">⏱️</div><div class="ach-body"><div class="ach-name">It's Not My Time</div><div class="ach-req">Survive a Dread encounter in The Mines — either escape its grip or be rescued by a teammate.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🪲</div><div class="ach-body"><div class="ach-name">Bug Bomb (formerly Flyswatter)</div><div class="ach-req">Use the Bug Bomb item against Grumbles in The Mines. The item was renamed from "Flyswatter" in the Content Update.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🦇</div><div class="ach-body"><div class="ach-name">The Bigger They Are</div><div class="ach-req">Use a Crucifix against a Grumble (updated — originally required crucifying Queen Grumble, which is now the separate "Queen's Gambit").</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">👸</div><div class="ach-body"><div class="ach-name">Queen's Gambit</div><div class="ach-req">Use a Crucifix against Queen Grumble during The Nest encounter. The Queen is paralyze-only — she cannot be fully banished.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🧟</div><div class="ach-body"><div class="ach-name">Grin Reaper</div><div class="ach-req">A Mines-specific entity encounter achievement. Details tied to a specific Mines entity interaction unlocked in the Content Update.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🎯</div><div class="ach-body"><div class="ach-name">Red Mist</div><div class="ach-req">A Mines-specific achievement added in the Content Update (Dec 2024). Tied to a specific encounter in the Mines section.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🚦</div><div class="ach-body"><div class="ach-name">Red Light</div><div class="ach-req">A Mines achievement from the Content Update. Tied to a specific entity/mechanic interaction in the Mines.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🧸</div><div class="ach-body"><div class="ach-name">Lookman No Looking</div><div class="ach-req">Content Update Mines achievement — tied to the "Lookman" entity encounter in the Mines sections.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">⌛</div><div class="ach-body"><div class="ach-name">Time Out</div><div class="ach-req">Content Update achievement. Related to timing or timer-based encounters in The Mines.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">💨</div><div class="ach-body"><div class="ach-name">Whoever Smelt It</div><div class="ach-req">Survive a Firedamp gas leak in The Mines without dying to the explosion. Move quickly away from gas clouds when they appear.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🎱</div><div class="ach-body"><div class="ach-name">Just A Prank</div><div class="ach-req">Survive being hit by a Minecart hazard in The Mines. Minecarts barrel through certain tunnel sections unpredictably.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🎯</div><div class="ach-body"><div class="ach-name">Scammed</div><div class="ach-req">A Content Update achievement related to purchasing an item from Jeff's shop with an unexpected or undesirable result.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🦎</div><div class="ach-body"><div class="ach-name">A Bone To Pick</div><div class="ach-req">Outdoors Update achievement — tied to a specific entity or encounter in The Outdoors floor.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🐦</div><div class="ach-body"><div class="ach-name">Feed The Birds</div><div class="ach-req">Outdoors Update achievement. Requires feeding or interacting with a bird-related element in The Outdoors.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌸</div><div class="ach-body"><div class="ach-name">Picking Flowers</div><div class="ach-req">Outdoors Update — collect or interact with flowers in The Outdoors environment.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌿</div><div class="ach-body"><div class="ach-name">D'oh</div><div class="ach-req">Outdoors Update — a comedic/mistake achievement from The Outdoors floor.</div><span class="ach-badge b-easy">Easy</span></div></div>
+  </div>
+
+  <p class="sub-h">Crucifix Achievements</p>
+  <div class="ach-grid">
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">Evil Be Gone!</div><div class="ach-req">Use a Crucifix to banish Rush. Hold the Crucifix as Rush approaches and trigger it mid-sweep.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">Stay Out Of My Way</div><div class="ach-req">Use a Crucifix to banish Ambush. Must be used while Ambush is actively sweeping through the room.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">Unbound</div><div class="ach-req">Use a Crucifix to banish Ambush. Cannot obtain using the "Again & Again & Again" modifier (known bug/restriction).</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">Take A Breather</div><div class="ach-req">Use a Crucifix against Seek mid-chase sequence. Must be triggered while Seek's chase is actively occurring.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">All Figured Out</div><div class="ach-req">Use a Crucifix against Figure in the Library or Electrical Room. Paralyzes Figure briefly but does not banish it.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">You Can't See Me</div><div class="ach-req">Use a Crucifix against Eyes. Paralyzes Eyes temporarily — does not fully banish. Secret achievement.</div><span class="ach-badge b-secret">Secret</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">I Hate You</div><div class="ach-req">Use a Crucifix against Screech. Must let Screech appear (don't look at it) then trigger the Crucifix. Secret achievement.</div><span class="ach-badge b-secret">Secret</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">Two Steps Ahead</div><div class="ach-req">Use a Crucifix against Halt in a hallway encounter. Paralyzes Halt mid-charge.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">Helping Hand</div><div class="ach-req">Use a Crucifix to save another player — crucify an entity that is actively attacking a teammate, not yourself.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">Trickshot</div><div class="ach-req">Use a Crucifix to banish an entity through a closed door — trigger it as the entity is about to enter from another room.</div><span class="ach-badge b-extreme">Extreme</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">I Don't Believe My Eyes</div><div class="ach-req">Use a Crucifix against the Mines variant of Eyes or A-60/A-120. Exact entity varies by floor context.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✝️</div><div class="ach-body"><div class="ach-name">Back to the RNG</div><div class="ach-req">A Crucifix-related Mines achievement. Banish a specific Mines entity using the Crucifix in a specific context.</div><span class="ach-badge b-hard">Hard</span></div></div>
+  </div>
+
+  <p class="sub-h">Floor Completion Achievements</p>
+  <div class="ach-grid">
+    <div class="ach-card"><div class="ach-icon">🏨</div><div class="ach-body"><div class="ach-name">Rock Bottom</div><div class="ach-req">Complete The Hotel — survive all 100 doors and escape via the final elevator. The primary goal of Floor 1. Two versions exist (pre and post Hotel+ update).</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">⛏️</div><div class="ach-body"><div class="ach-name">See You Soon</div><div class="ach-req">Complete The Mines — survive all 200+ doors including The Dam Seek encounter and escape via The Woods. Can be earned by spectating another player's successful completion.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🔮</div><div class="ach-body"><div class="ach-name">Around Back</div><div class="ach-req">Escape from The Backdoor dimension (post-Hunt addition). Requires accessing The Backdoor and surviving long enough to exit.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌿</div><div class="ach-body"><div class="ach-name">Touched Grass</div><div class="ach-req">Complete The Outdoors floor — the newest floor added in The Great Outdoors Update (August 2025).</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌱</div><div class="ach-body"><div class="ach-name">Rebirth</div><div class="ach-req">Outdoors Update achievement. Tied to completing a specific sub-section or event in The Outdoors.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🔄</div><div class="ach-body"><div class="ach-name">Detour</div><div class="ach-req">Take the Vine Door shortcut in The Courtyard using Shears + Skeleton Key. An optional secret path in The Hotel.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🚶</div><div class="ach-body"><div class="ach-name">Back On Track</div><div class="ach-req">Return to the main hotel after visiting The Rooms sub-floor. Exit The Rooms dimension and re-enter The Hotel elevator.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌊</div><div class="ach-body"><div class="ach-name">Down The Drain</div><div class="ach-req">Beat Seek in The Dam (door 200 of The Mines) by rotating all valves and escaping to The Woods.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🪤</div><div class="ach-body"><div class="ach-name">Trespassing</div><div class="ach-req">Activate all anchors in The Nest (door 150) and escape. Required for progression through Floor 2.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🏃</div><div class="ach-body"><div class="ach-name">Running Track</div><div class="ach-req">Escape from the Mines Seek chase sequence (Cart Ride). Survive the Mines Seek encounter with its unique cart/valve mechanic.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🛣️</div><div class="ach-body"><div class="ach-name">Down The Water Spout</div><div class="ach-req">Complete The Outdoors. Also unlocks the "Sodded" modifier for use in other floors.</div><span class="ach-badge b-hard">Hard</span></div></div>
+  </div>
+
+  <p class="sub-h">Modifier / Sub-Floor Achievements</p>
+  <div class="ach-grid">
+    <div class="ach-card"><div class="ach-icon">⭐</div><div class="ach-body"><div class="ach-name">Not Five Stars</div><div class="ach-req">Escape The Hotel with at least a +50% Knob bonus from modifiers. Unlocks additional modifiers including "Lights Out" and "El Goblino's Payday."</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🔥</div><div class="ach-body"><div class="ach-name">Hotel Hell</div><div class="ach-req">Escape The Hotel with at least a +150% Knob bonus from modifiers. One of the hardest standard achievements — requires heavy modifier stacking.</div><span class="ach-badge b-extreme">Extreme</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🪨</div><div class="ach-body"><div class="ach-name">Rocky Road</div><div class="ach-req">Escape The Mines with at least a +50% Knob bonus from modifiers. The Mines equivalent of Not Five Stars. Added Content Update Dec 2024.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">⛰️</div><div class="ach-body"><div class="ach-name">A Hard Place</div><div class="ach-req">Escape The Mines with at least a +150% Knob bonus from modifiers. The Mines equivalent of Hotel Hell. Added Content Update Dec 2024.</div><span class="ach-badge b-extreme">Extreme</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌀</div><div class="ach-body"><div class="ach-name">Other Way Around</div><div class="ach-req">Access The Backdoor dimension (post-Hunt). Required to unlock Backdoor-related modifiers like Make Haste and Vacuum Sealed.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌀</div><div class="ach-body"><div class="ach-name">A-1000</div><div class="ach-req">Survive 1,000 consecutive rooms in The Rooms sub-floor. One of the rarest and most time-consuming achievements in DOORS. Rainbow title.</div><span class="ach-badge b-extreme">Extreme</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌑</div><div class="ach-body"><div class="ach-name">It Stares Back</div><div class="ach-req">Encounter a specific rare entity or visual in The Rooms dimension. Tied to a rare spawn event within the infinite loop.</div><span class="ach-badge b-hard">Hard</span></div></div>
+  </div>
+
+  <p class="sub-h">Content Update Achievements (Dec 2024)</p>
+  <div class="ach-grid">
+    <div class="ach-card"><div class="ach-icon">🟢</div><div class="ach-body"><div class="ach-name">You Finally Turn Green</div><div class="ach-req">Content Update Dec 2024. Tied to a specific Mines entity or environmental interaction.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌑</div><div class="ach-body"><div class="ach-name">Lost In The Dark</div><div class="ach-req">Content Update Dec 2024. Tied to darkness mechanics or getting lost in a Mines dark section.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🏛️</div><div class="ach-body"><div class="ach-name">Under New Management</div><div class="ach-req">Content Update Dec 2024. Tied to a management/control mechanic in The Mines or a shop-related action.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🧩</div><div class="ach-body"><div class="ach-name">Trade Offer</div><div class="ach-req">Content Update Dec 2024 — likely tied to trading or exchanging items in a specific in-game context.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">⏳</div><div class="ach-body"><div class="ach-name">Trial And Error</div><div class="ach-req">Content Update Dec 2024 — tied to attempting a puzzle or mechanic multiple times before succeeding.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🎮</div><div class="ach-body"><div class="ach-name">Playtime</div><div class="ach-req">Content Update Dec 2024 — tied to playtime or completing a session-based milestone.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">⏹️</div><div class="ach-body"><div class="ach-name">Playtime's Over</div><div class="ach-req">Content Update Dec 2024 — a follow-up or counterpart to the Playtime achievement.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🔴</div><div class="ach-body"><div class="ach-name">Stop Right There</div><div class="ach-req">Survive an A-90 encounter in a standard Hotel/Mines room (enabled by the Stop Right There modifier). A-90 appears outside The Rooms context.</div><span class="ach-badge b-hard">Hard</span></div></div>
+  </div>
+
+  <p class="sub-h">Daily Runs Achievements (Jan 2026)</p>
+  <div class="ach-grid">
+    <div class="ach-card"><div class="ach-icon">🤖</div><div class="ach-body"><div class="ach-name">MACHINE LEARNING</div><div class="ach-req">Win any Daily Run. Retries count toward this achievement. Daily Runs are special challenge runs with preset modifiers.</div><span class="ach-badge b-easy">Easy</span></div></div>
+    <div class="ach-card"><div class="ach-icon">✅</div><div class="ach-body"><div class="ach-name">CLEAN RUN</div><div class="ach-req">Win any Daily Run on your very first attempt with no retries.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">⚙️</div><div class="ach-body"><div class="ach-name">PARALLEL PROCESSING</div><div class="ach-req">Win any Daily Run with other players present in your session.</div><span class="ach-badge b-med">Medium</span></div></div>
+    <div class="ach-card"><div class="ach-icon">📶</div><div class="ach-body"><div class="ach-name">LOW LATENCY</div><div class="ach-req">Win a Daily Run in under a specific time threshold. Requires speed and efficiency.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🟢</div><div class="ach-body"><div class="ach-name">UPTIME</div><div class="ach-req">Win a certain number of consecutive Daily Runs or maintain a win streak.</div><span class="ach-badge b-extreme">Extreme</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🌀</div><div class="ach-body"><div class="ach-name">Everything Everywhere All At Once</div><div class="ach-req">Added in the Chaos Batch Update (Feb 2026). Likely tied to activating a maximum combination of modifiers or completing a run under extreme conditions.</div><span class="ach-badge b-extreme">Extreme</span></div></div>
+  </div>
+
+  <p class="sub-h">Collab & Event Achievements</p>
+  <div class="ach-grid">
+    <div class="ach-card"><div class="ach-icon">🗼</div><div class="ach-body"><div class="ach-name">Meet Jack</div><div class="ach-req">Encounter Jack in the Hotel. Jack appears as a rare event in specific rooms (Bloodroom Jack or Closet Jack). Fixed in 2024 Trick Or Treat event to also count Closet Jack.</div><span class="ach-badge b-hard">Hard</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🧟</div><div class="ach-body"><div class="ach-name">Survival The Jeff the Killer</div><div class="ach-req">April Fools 2023 event — defeat or survive the Jeff The Killer encounter in the April Fools Hotel variant. Now unobtainable. One of the rarest badges.</div><span class="ach-badge b-event">Limited</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🕹️</div><div class="ach-body"><div class="ach-name">Survive The Drakobloxxers</div><div class="ach-req">April Fools 2024 — beat RETRO MODE and survive the Drakobloxxers event. Unobtainable after April 10, 2024.</div><span class="ach-badge b-event">Limited</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🏆</div><div class="ach-body"><div class="ach-name">THE HUNT: First Edition</div><div class="ach-req">Obtained during Roblox's THE HUNT: First Edition event by escaping The Backdoor. Unobtainable after the event ended March 30, 2024.</div><span class="ach-badge b-event">Limited</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🎃</div><div class="ach-body"><div class="ach-name">Trick Or Treat!</div><div class="ach-req">Knock on 30 Treater doors during the 2025 Trick Or Treat Halloween event. Treater doors are special pumpkin-themed doors that give candy rewards.</div><span class="ach-badge b-event">Seasonal</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🎄</div><div class="ach-body"><div class="ach-name">Silent Night</div><div class="ach-req">Cringle's Workshop Event Dec 2025 — complete a specific task during the 2025 holiday event.</div><span class="ach-badge b-event">Seasonal</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🎁</div><div class="ach-body"><div class="ach-name">Holiday Spirit</div><div class="ach-req">Gift anything from the in-game Store with Robux during the 2025 holiday event period.</div><span class="ach-badge b-event">Seasonal</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🎤</div><div class="ach-body"><div class="ach-name">BLOXFEST: Double Feature</div><div class="ach-req">Bloxfest 2026 event — Escape The Hotel and The Mines with restrictions: no modifiers, no revives, no Lotus, no Saves, no Rift use.</div><span class="ach-badge b-event">Limited</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🏎️</div><div class="ach-body"><div class="ach-name">CERTIFIED RUSH FAN</div><div class="ach-req">April Fools 2026 — Beat RUSH MODE!! A special mode created by developer ItsThump for the 2026 April Fools event. Secret badge.</div><span class="ach-badge b-event">Seasonal</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🔥</div><div class="ach-body"><div class="ach-name">Hardstuck</div><div class="ach-req">April Fools 2025 — Reach STARTER Rank in RANKED mode. A ranked variant event badge. Displays your actual rank achieved.</div><span class="ach-badge b-event">Seasonal</span></div></div>
+    <div class="ach-card"><div class="ach-icon">🧪</div><div class="ach-body"><div class="ach-name">QA Tester</div><div class="ach-req">Exclusively obtainable by official game testers/developers. Cannot be obtained by regular players. The rarest badge in DOORS.</div><span class="ach-badge b-extreme">Dev Only</span></div></div>
+  </div>
+
+</section>
+
+<div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+<!-- ===== 08 EVENTS ===== -->
+<section class="wiki-section" id="events">
+  <div class="section-header">
+    <span class="section-num">08</span>
+    <div><h2 class="section-title">Events</h2><p class="section-desc">Seasonal and limited-time events that transform DOORS with new mechanics, modifiers, and achievements</p></div>
+  </div>
+  <p class="chapter-intro">DOORS hosts seasonal events that add themed rooms, exclusive items, modified entity behavior, and limited-time achievements. Most event achievements and items are unobtainable once the event window closes.</p>
+  <div class="events-list">
+
+    <div class="event-row">
+      <div class="event-icon">🎃</div>
+      <div class="event-body">
+        <h3>Halloween — Trick Or Treat (2024 & 2025)</h3>
+        <p>The annual Halloween event adds the "Trick Or Treat" modifier — special Treater doors appear throughout the run, and knocking on them gives Candy items with random positive, neutral, or negative effects (healing, speed, debuffs, or entity triggers). The 2024 version introduced Bloodroom Jack and Closet Jack as rare entity encounters. 2025 added seasonal achievements including "Trick Or Treat!" for knocking on 30 Treater doors. Entity reskins, pumpkin lighting, and Halloween atmosphere applied to The Hotel. Note: the modifier disables game progress.</p>
+      </div>
+      <div class="event-period">October<br>Annual</div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-icon">🎄</div>
+      <div class="event-body">
+        <h3>Cringle's Workshop (Winter 2025)</h3>
+        <p>The 2025 holiday event, running December 2025 into January 2026. Added two achievements: "Silent Night" (complete an event task) and "Holiday Spirit" (gift anything from the Store with Robux). Themed decorations, seasonal atmosphere applied to The Hotel lobby. Limited-time achievements that became unobtainable after the event window closed.</p>
+      </div>
+      <div class="event-period">Dec 2025<br>Limited</div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-icon">🕹️</div>
+      <div class="event-body">
+        <h3>April Fools Events (2023, 2024, 2025, 2026)</h3>
+        <p>Annual April Fools events have varied significantly each year. 2023: "Survival The Jeff The Killer" — Jeff The Killer replaced Figure. 2024: RETRO MODE — a retro-styled hotel variant with Drakobloxxers enemies (Survive The Drakobloxxers badge). 2025: RANKED MODE — a competitive ranked bracket system with the "Hardstuck" badge for reaching STARTER rank. 2026: RUSH MODE — a special mode created by developer ItsThump with the secret "CERTIFIED RUSH FAN" badge. All event badges become unobtainable after the event window ends (usually April 9–10).</p>
+      </div>
+      <div class="event-period">April 1st<br>Annual</div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-icon">🏆</div>
+      <div class="event-body">
+        <h3>THE HUNT: First Edition (March 2024)</h3>
+        <p>A Roblox-wide scavenger hunt event that DOORS participated in. Players were tasked with escaping The Backdoor dimension to earn the limited-time "THE HUNT: First Edition" badge (Roblox badge). Two new permanent achievements were added post-event: "Other Way Around" and "Around Back" for accessing and completing The Backdoor respectively. The Backdoor is now accessible as a permanent sub-floor through the "Other Way Around" modifier.</p>
+      </div>
+      <div class="event-period">March 2024<br>Completed</div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-icon">🎤</div>
+      <div class="event-body">
+        <h3>Bloxfest 2026 (February 2026)</h3>
+        <p>A Roblox event collaboration. Added the "BLOXFEST: Double Feature" secret achievement — requiring players to escape both The Hotel and The Mines back-to-back with strict restrictions: no modifiers, no revives, no Lotus items, no Saves, and no Rift usage for the entire combined run. One of the most challenging event achievements due to the no-safety-net requirement across two full floors.</p>
+      </div>
+      <div class="event-period">Feb 2026<br>Limited</div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-icon">🐉</div>
+      <div class="event-body">
+        <h3>Tower Heroes Collab</h3>
+        <p>A collaboration with the Roblox game Tower Heroes. Added cross-game collab achievements. Jeff's shop icon and El Goblino are represented in Tower Heroes as a collaboration nod. The "Not Five Stars" badge icon notably uses El Goblino's Tower Heroes model rather than the in-game model. Added collab-exclusive cosmetic rewards in both games for participants.</p>
+      </div>
+      <div class="event-period">2023–2024<br>Ongoing collab</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+<!-- ===== 09 TIPS ===== -->
+<section class="wiki-section" id="tips">
+  <div class="section-header">
+    <span class="section-num">09</span>
+    <div><h2 class="section-title">Survival Guide</h2><p class="section-desc">Essential strategies, hidden mechanics, and expert-level tactics</p></div>
+  </div>
+  <p class="chapter-intro">These tips assume you've at least seen each entity once. If you're completely new — just play your first few runs blind for the authentic experience. Then come back here.</p>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="tip-num">01</div><p class="tip-text"><strong>The flicker is your alarm.</strong> Rush causes lights to flicker 2–4 seconds before entering. The moment you see ANY flickering — sprint to a wardrobe or bed and get inside. Don't wait to confirm it's Rush. React first, confirm second.</p></div>
+    <div class="tip-card"><div class="tip-num">02</div><p class="tip-text"><strong>Ambush wants you impatient.</strong> After a Rush/Ambush sweep, wait for the audio cue (a distinct 'despawn' sound) to fully stop. Ambush never fully despawns unless crucified — it WILL come back. Rushing out early is why most people die to it.</p></div>
+    <div class="tip-card"><div class="tip-num">03</div><p class="tip-text"><strong>Figure is a sound god.</strong> In the Library and Electrical Room: crouch constantly, never sprint, never jump. Walking near shelves you can bump into knocks books. Open drawers only when Figure is on the far side of the room. The Inhibitor item cuts its hearing range significantly.</p></div>
+    <div class="tip-card"><div class="tip-num">04</div><p class="tip-text"><strong>Screech says "pst" exactly once.</strong> Turn on a light source in every dark room immediately. If you hear "pst," scan the room fast and look DIRECTLY at Screech within ~3 seconds. If you're already looking at a flashlight's beam path, that usually covers it.</p></div>
+    <div class="tip-card"><div class="tip-num">05</div><p class="tip-text"><strong>Eyes is about camera direction, not sight.</strong> When Eyes appears, stare at the floor, wall, or ceiling. Even having Eyes in the edge of your peripheral view deals damage. The goal is zero eye contact — not just "not staring at it."</p></div>
+    <div class="tip-card"><div class="tip-num">06</div><p class="tip-text"><strong>Seek's walls tell you everything.</strong> Eyes appearing on walls and floors = Seek is 15–30 seconds away. Use this time to mentally note obstacles in the upcoming corridor. Equip Adrenaline before the chase triggers, not during.</p></div>
+    <div class="tip-card"><div class="tip-num">07</div><p class="tip-text"><strong>A-90 demands total paralysis.</strong> When A-90 appears, release every key and stop all mouse movement. Do NOT try to hide, sprint, or crouch. Literally nothing — not even a millimeter of mouse drift — is the counter. Wait 3–5 seconds for it to vanish.</p></div>
+    <div class="tip-card"><div class="tip-num">08</div><p class="tip-text"><strong>Halt is a rhythm game.</strong> When Halt appears, walk forward (toward it) while facing it. As it nearly reaches you, turn 180° immediately. The hallway resets. Repeat until the hallway section ends. Never run away from it — walk toward it, then turn.</p></div>
+    <div class="tip-card"><div class="tip-num">09</div><p class="tip-text"><strong>Dupe doors are one digit off.</strong> If the door says the same number as the room you're in, or the previous room's number — it's Dupe. If it says the number that should come NEXT in sequence — it's real. When in doubt, check the key in your hand (if you have one) — it shows the real door number.</p></div>
+    <div class="tip-card"><div class="tip-num">10</div><p class="tip-text"><strong>The Lotus / Starfish is run insurance.</strong> At 200 Gold from Jeff, it's the best purchase in the game. You lose absolutely nothing by buying it early. Think of it as paying 200 Gold to protect a 60–90 minute investment. Buy it before Vitamins if you're choosing.</p></div>
+    <div class="tip-card"><div class="tip-num">11</div><p class="tip-text"><strong>Gold and Knobs are different currencies.</strong> Gold is found in drawers and shelves — spent at Jeff's shop in-run. Knobs are the lobby currency earned on run completion/death — spent in the pre-run shop. Never confuse them. Modifiers multiply your Knob earnings at run end, not your Gold mid-run.</p></div>
+    <div class="tip-card"><div class="tip-num">12</div><p class="tip-text"><strong>The Rooms block modifiers — plan ahead.</strong> You cannot enter The Rooms if any modifier is active (blocked by a red barrier). If you want both the modifier bonus AND a Rooms run, you need separate runs. The Backdoor (via Other Way Around modifier) is a different sub-floor and IS accessible with modifiers.</p></div>
+  </div>
+</section>
+
+<div class="ornament" aria-hidden="true">◆ ◆ ◆</div>
+
+<!-- ===== 10 LORE ===== -->
+<section class="wiki-section" id="lore">
+  <div class="section-header">
+    <span class="section-num">10</span>
+    <div><h2 class="section-title">Lore & Story</h2><p class="section-desc">The narrative buried in environments, journals, entity behavior, and developer hints</p></div>
+  </div>
+  <p class="chapter-intro">DOORS communicates its story through environmental details, hidden lore documents, entity behavior, and developer statements. Multiple playthroughs and careful observation are needed to piece together the full picture. The following reflects confirmed or strongly implied lore.</p>
+  <div class="lore-grid">
+    <div class="sub-card">
+      <h3>The Three Architects</h3>
+      <p>Developer hints and in-game paintings near The Rooms entrance suggest a trio of supernatural entities — "The Three Architects" — who govern the hotel's reality. Guiding Light (golden, helpful), a neutral figure (possibly tied to modifiers and the Red Architect motif), and a dark third presence. The spacetime painting near The Rooms entrance is cited as evidence of their roles. Modifiers themselves may be lore-relevant to these figures.</p>
+      <ul><li>Guiding Light = helpful gold architect</li><li>Red Architect = modifier-related, controlling difficulty</li><li>Third architect — nature unclear</li><li>Modifier symbols appear next to Crucifix paintings</li></ul>
+    </div>
+    <div class="sub-card">
+      <h3>Figure's Origin</h3>
+      <p>Figure is heavily implied to have once been human — or at minimum, was created by a human event rather than a supernatural one. Lore documents in the Hotel reference a catastrophic incident that cleared the building of its staff and guests. Figure appears to be something that resulted from or was drawn in by that event. Its behavior (patrolling, reacting to sound, seeming almost habitual) suggests remnant human instincts.</p>
+      <ul><li>Blind — relies entirely on sound</li><li>Patrols the Library as if on routine</li><li>Entities were canonically named by "the person the player represents" — not their real names</li><li>Lore docs reference a pre-closure Hotel incident</li></ul>
+    </div>
+    <div class="sub-card">
+      <h3>Seek's Nature</h3>
+      <p>Seek is described in old Hotel documents as "The Watchful Dark" — a collective presence that observes before it acts. The eyes that appear on walls before Seek's chase sequence are confirmed to be extensions of Seek itself, not separate entities. Seek grows larger and more aggressive in its second Hotel encounter, suggesting it feeds on or grows from the player's presence. In The Mines, Seek manifests differently — through the flooding Dam sequence — suggesting it adapts to its environment.</p>
+      <ul><li>The wall/floor eyes ARE Seek — pre-attack observation</li><li>Grows more powerful per encounter in same run</li><li>Adapts to the environment (Hotel halls → Dam flooding)</li><li>Crucifix can interrupt a chase for "Take A Breather"</li></ul>
+    </div>
+    <div class="sub-card">
+      <h3>The Rooms & The Backdoor</h3>
+      <p>The Rooms are an infinite liminal space — a yellow-tiled, looping non-place. Developer statements confirm it connects to a separate game's universe, which is why A-60, A-90, and A-120 exist there. The Backdoor is a related but distinct pocket dimension introduced after The Hunt, featuring its own entity Haste and lever-based timer mechanic. Both spaces represent "leaks" or boundaries between the Hotel's reality and something adjacent to it.</p>
+      <ul><li>The Rooms = cross-universe crossover dimension</li><li>A-60, A-90, A-120 originate from the connected game universe</li><li>The Backdoor = distinct from The Rooms (post-Hunt addition)</li><li>Red barrier = modifiers prevent entry to The Rooms (lore-relevant)</li></ul>
+    </div>
+    <div class="sub-card">
+      <h3>The Mines' Purpose</h3>
+      <p>The Mines beneath the Hotel were not originally a standard mining operation. Research areas deep in The Mines suggest they predate the Hotel incident and were conducting experimental work of some kind. The presence of Dread, Grumble colonies, and unique entity behavior in the Mines suggests the underground environment has its own distinct ecosystem of dangers — separate from the Hotel's entities — that pre-existed human involvement.</p>
+      <ul><li>Mines sub-sections: Adit → Shafts → Caverns → Nest → Sewers → Dam → Woods</li><li>Firedamp and Flood hazards suggest abandoned industrial/research use</li><li>Grumbles inhabit The Nest as their home territory</li><li>Figure also appears in the Mines — suggesting it followed players down</li></ul>
+    </div>
+    <div class="sub-card">
+      <h3>The Outdoors</h3>
+      <p>The Outdoors is the most recent floor (Aug 2025) and represents the world beyond the Hotel and Mines — an overgrown, post-abandonment outdoor environment. The Groundskeeper is the floor's primary entity, patrolling outdoor paths as if maintaining the property. The implication is that whatever event caused the Hotel's closure also affected the surrounding grounds, leaving them dangerous and overgrown with the Groundskeeper as the only "maintenance" presence.</p>
+      <ul><li>First outdoor floor — no enclosed rooms</li><li>Groundskeeper patrols outdoor landmark routes</li><li>Snare entities present throughout</li><li>Completing it earns "Touched Grass" and "Down The Water Spout"</li></ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wiki-footer">
+  <p style="font-family:var(--font-d);font-size:1.15rem;color:var(--gold);margin-bottom:.5rem;letter-spacing:.06em">DOORS</p>
+  <p>An unofficial fan-made encyclopedia. All game content, entities, mechanics, items, modifiers, achievements, and lore belong to LSPLASH, Lightning_Splash, RediblesQW, and the DOORS development team on Roblox.</p>
+  <p style="margin-top:.4rem;font-size:.78rem">Information sourced from the official DOORS Wiki (doors-game.fandom.com) and in-game content. Updated to reflect The Great Outdoors Update (August 2025) and Daily Runs Batch Update (January 2026).</p>
+</footer>
+
+</body>
+</html>
