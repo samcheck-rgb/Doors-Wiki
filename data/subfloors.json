@@ -1,0 +1,12 @@
+[
+  {
+    "name": "The Rooms",
+    "parent": "Hotel",
+    "theme": "rooms"
+  },
+  {
+    "name": "The Backdoor",
+    "parent": "Hotel",
+    "theme": "backdoor"
+  }
+]
