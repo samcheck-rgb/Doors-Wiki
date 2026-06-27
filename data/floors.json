@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Hotel",
+    "theme": "hotel"
+  },
+  {
+    "name": "The Mines",
+    "theme": "mines"
+  },
+  {
+    "name": "The Rooms",
+    "theme": "rooms"
+  },
+  {
+    "name": "The Backdoor",
+    "theme": "backdoor"
+  },
+  {
+    "name": "Void",
+    "theme": "void"
+  }
+]
