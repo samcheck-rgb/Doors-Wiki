@@ -1,0 +1,49 @@
+:root {
+  --bg: #111;
+  --text: #f5f5f5;
+  --card: #1b1b1b;
+  --sidebar: #181818;
+  --border: #333;
+  --accent: #b8860b;
+}
+
+body[data-theme="hotel"] {
+  --bg: #14110d;
+  --card: #241d14;
+  --sidebar: #1a140d;
+  --border: #5c4320;
+  --accent: #d4a017;
+}
+
+body[data-theme="mines"] {
+  --bg: #0e1318;
+  --card: #1a232c;
+  --sidebar: #111920;
+  --border: #3d556b;
+  --accent: #6bb7ff;
+}
+
+body[data-theme="rooms"] {
+  --bg: #d8d8d8;
+  --text: #111;
+  --card: #f5f5f5;
+  --sidebar: #e7e7e7;
+  --border: #aaa;
+  --accent: #4c7cff;
+}
+
+body[data-theme="backdoor"] {
+  --bg: #12051a;
+  --card: #241034;
+  --sidebar: #1a0b26;
+  --border: #6a2fb8;
+  --accent: #b86bff;
+}
+
+body[data-theme="void"] {
+  --bg: #050505;
+  --card: #101010;
+  --sidebar: #0b0b0b;
+  --border: #444;
+  --accent: #ff3c78;
+}
